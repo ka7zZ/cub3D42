@@ -6,7 +6,7 @@
 /*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 20:34:45 by vruiz-ru          #+#    #+#             */
-/*   Updated: 2026/05/05 20:34:48 by vruiz-ru         ###   ########.fr       */
+/*   Updated: 2026/05/06 17:49:11 by vruiz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ static int	ft_cell_blocks_player(t_game *game, int map_x, int map_y)
 {
 	int	i;
 
-	if (map_x < 0 || map_x >= game->map_width
-		|| map_y < 0 || map_y >= game->map_height)
+	if (map_x < 0 || map_x >= game->map_width || map_y < 0
+		|| map_y >= game->map_height)
 		return (1);
 	if (game->map[map_y][map_x] == '1')
 		return (1);
@@ -50,8 +50,7 @@ static int	ft_cell_blocks_player(t_game *game, int map_x, int map_y)
 	i = 0;
 	while (i < game->door_count)
 	{
-		if (game->doors[i].map_x == map_x
-			&& game->doors[i].map_y == map_y
+		if (game->doors[i].map_x == map_x && game->doors[i].map_y == map_y
 			&& !game->doors[i].is_open)
 			return (1);
 		i++;
@@ -87,13 +86,11 @@ int	ft_game_loop(t_game *game)
 	long long	frame_start;
 
 	frame_start = ft_now_us();
-	
 	ft_update_delta_time(game);
 	game->frame_count++;
 	ft_update_doors(game);
 	ft_update_player(game);
 	ft_update_shotgun(game);
 	ft_raycast_frame(game);
-	
 	return (0);
 }

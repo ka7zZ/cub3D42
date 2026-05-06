@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 15:47:01 by vruiz-ru          #+#    #+#             */
-/*   Updated: 2026/05/06 14:30:04 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/06 17:59:07 by vruiz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	ft_init_mlx(t_game *game)
 	if (!game->graph.frame.img)
 		ft_exit_error(game, "Image creation failed");
 	game->graph.frame.addr = mlx_get_data_addr(game->graph.frame.img,
-			&game->graph.frame.bpp, 
-			&game->graph.frame.line_len, 
+			&game->graph.frame.bpp,
+			&game->graph.frame.line_len,
 			&game->graph.frame.endian);
 }
 

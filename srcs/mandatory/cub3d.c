@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 00:00:00 by vruiz-ru          #+#    #+#             */
-/*   Updated: 2026/05/06 14:26:42 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/06 17:55:21 by vruiz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,10 @@ static void	ft_set_hooks(t_game *game)
 	mlx_hook(game->graph.win, KeyPress, KeyPressMask, ft_key_press, game);
 	mlx_hook(game->graph.win, KeyRelease, KeyReleaseMask, ft_key_release, game);
 	mlx_hook(game->graph.win, DestroyNotify, NoEventMask, ft_close_game, game);
-	mlx_hook(game->graph.win, ButtonPress, ButtonPressMask, ft_mouse_pressed, game);
-	mlx_hook(game->graph.win, ButtonRelease, ButtonReleaseMask, ft_mouse_released, game);
+	mlx_hook(game->graph.win, ButtonPress, ButtonPressMask,
+		ft_mouse_pressed, game);
+	mlx_hook(game->graph.win, ButtonRelease, ButtonReleaseMask,
+		ft_mouse_released, game);
 	mlx_hook(game->graph.win, FocusOut, FocusChangeMask, ft_focus_out, game);
 	mlx_hook(game->graph.win, FocusIn, FocusChangeMask, ft_focus_in, game);
 }
