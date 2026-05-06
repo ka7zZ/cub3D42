@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 14:18:20 by aghergut          #+#    #+#             */
-/*   Updated: 2026/05/06 14:18:23 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/06 16:39:04 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ typedef struct s_player
 	double	pos_y;
 	double	dir_x;
 	double	dir_y;
-	double	plane_x;
-	double	plane_y;
+	double	pln_x;
+	double	pln_y;
 	int		pitch;
 	int		moves;
 }	t_player;

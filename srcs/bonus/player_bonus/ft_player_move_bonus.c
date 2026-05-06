@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 14:19:00 by aghergut          #+#    #+#             */
-/*   Updated: 2026/05/06 14:19:01 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/06 16:39:04 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ void	ft_move_forward(t_game *game)
 	double	step;
 
 	step = MOVE_SPEED * game->delta_time;
-	new_x = game->player.pos_x + game->player.dir_x * step;
-	new_y = game->player.pos_y + game->player.dir_y * step;
-	if (!ft_check_wall(game, new_x, game->player.pos_y))
+	new_x = game->kid.pos_x + game->kid.dir_x * step;
+	new_y = game->kid.pos_y + game->kid.dir_y * step;
+	if (!ft_check_wall(game, new_x, game->kid.pos_y))
 	{
-		game->player.pos_x = new_x;
-		game->player.moves++;
+		game->kid.pos_x = new_x;
+		game->kid.moves++;
 	}
-	if (!ft_check_wall(game, game->player.pos_x, new_y))
+	if (!ft_check_wall(game, game->kid.pos_x, new_y))
 	{
-		game->player.pos_y = new_y;
-		game->player.moves++;
+		game->kid.pos_y = new_y;
+		game->kid.moves++;
 	}
 }
 
@@ -40,17 +40,17 @@ void	ft_move_backward(t_game *game)
 	double	step;
 
 	step = MOVE_SPEED * game->delta_time;
-	new_x = game->player.pos_x - game->player.dir_x * step;
-	new_y = game->player.pos_y - game->player.dir_y * step;
-	if (!ft_check_wall(game, new_x, game->player.pos_y))
+	new_x = game->kid.pos_x - game->kid.dir_x * step;
+	new_y = game->kid.pos_y - game->kid.dir_y * step;
+	if (!ft_check_wall(game, new_x, game->kid.pos_y))
 	{
-		game->player.pos_x = new_x;
-		game->player.moves++;
+		game->kid.pos_x = new_x;
+		game->kid.moves++;
 	}
-	if (!ft_check_wall(game, game->player.pos_x, new_y))
+	if (!ft_check_wall(game, game->kid.pos_x, new_y))
 	{
-		game->player.pos_y = new_y;
-		game->player.moves++;
+		game->kid.pos_y = new_y;
+		game->kid.moves++;
 	}
 }
 
@@ -61,17 +61,17 @@ void	ft_move_left(t_game *game)
 	double	step;
 
 	step = MOVE_SPEED * game->delta_time;
-	new_x = game->player.pos_x - game->player.plane_x * step;
-	new_y = game->player.pos_y - game->player.plane_y * step;
-	if (!ft_check_wall(game, new_x, game->player.pos_y))
+	new_x = game->kid.pos_x - game->kid.pln_x * step;
+	new_y = game->kid.pos_y - game->kid.pln_y * step;
+	if (!ft_check_wall(game, new_x, game->kid.pos_y))
 	{
-		game->player.pos_x = new_x;
-		game->player.moves++;
+		game->kid.pos_x = new_x;
+		game->kid.moves++;
 	}
-	if (!ft_check_wall(game, game->player.pos_x, new_y))
+	if (!ft_check_wall(game, game->kid.pos_x, new_y))
 	{
-		game->player.pos_y = new_y;
-		game->player.moves++;
+		game->kid.pos_y = new_y;
+		game->kid.moves++;
 	}
 }
 
@@ -82,16 +82,16 @@ void	ft_move_right(t_game *game)
 	double	step;
 
 	step = MOVE_SPEED * game->delta_time;
-	new_x = game->player.pos_x + game->player.plane_x * step;
-	new_y = game->player.pos_y + game->player.plane_y * step;
-	if (!ft_check_wall(game, new_x, game->player.pos_y))
+	new_x = game->kid.pos_x + game->kid.pln_x * step;
+	new_y = game->kid.pos_y + game->kid.pln_y * step;
+	if (!ft_check_wall(game, new_x, game->kid.pos_y))
 	{
-		game->player.pos_x = new_x;
-		game->player.moves++;
+		game->kid.pos_x = new_x;
+		game->kid.moves++;
 	}
-	if (!ft_check_wall(game, game->player.pos_x, new_y))
+	if (!ft_check_wall(game, game->kid.pos_x, new_y))
 	{
-		game->player.pos_y = new_y;
-		game->player.moves++;
+		game->kid.pos_y = new_y;
+		game->kid.moves++;
 	}
 }

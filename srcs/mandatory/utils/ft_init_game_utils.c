@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_game_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 15:54:50 by vruiz-ru          #+#    #+#             */
-/*   Updated: 2026/05/05 15:55:05 by vruiz-ru         ###   ########.fr       */
+/*   Updated: 2026/05/06 16:40:30 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_init_stage_assets_world(t_game *game)
 
 void	ft_init_stage_runtime(t_game *game)
 {
-	game->timing.frame_count = 0;
-	game->timing.delta_time = 0.016;
-	game->timing.last_frame_us = 0;
+	game->cron.frame_count = 0;
+	game->cron.delta_t = 0.016;
+	game->cron.lframe_us = 0;
 }

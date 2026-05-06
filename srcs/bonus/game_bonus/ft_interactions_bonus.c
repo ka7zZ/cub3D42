@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_interactions_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 20:35:02 by vruiz-ru          #+#    #+#             */
-/*   Updated: 2026/05/05 20:35:04 by vruiz-ru         ###   ########.fr       */
+/*   Updated: 2026/05/06 16:36:43 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ static int	ft_toggle_near_door(t_game *game)
 	i = 0;
 	while (i < game->door_count)
 	{
-		dx = game->doors[i].map_x - game->player.pos_x;
-		dy = game->doors[i].map_y - game->player.pos_y;
+		dx = game->doors[i].map_x - game->kid.pos_x;
+		dy = game->doors[i].map_y - game->kid.pos_y;
 		dist = dx * dx + dy * dy;
 		if (dist < INTERACT_RANGE * INTERACT_RANGE)
 		{

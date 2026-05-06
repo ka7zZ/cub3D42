@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 14:20:17 by aghergut          #+#    #+#             */
-/*   Updated: 2026/05/06 14:20:19 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/06 16:38:19 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	ft_draw_wall_pixels_normal(t_game *g, t_ray *r, t_texture *tex, int 
 	frame_line_len = g->frame.line_len;
 	x_offset = x * (g->frame.bpp / 8);
 	step = 1.0 * tex->height / r->line_height;
-	pos = (r->draw_start - g->win_height / 2 - g->player.pitch
+	pos = (r->draw_start - g->win_height / 2 - g->kid.pitch
 			+ r->line_height / 2) * step;
 	y = r->draw_start;
 	while (y < r->draw_end)
@@ -59,7 +59,7 @@ static void	ft_draw_wall_pixels_dark(t_game *g, t_ray *r, t_texture *tex, int x)
 	frame_line_len = g->frame.line_len;
 	x_offset = x * (g->frame.bpp / 8);
 	step = 1.0 * tex->height / r->line_height;
-	pos = (r->draw_start - g->win_height / 2 - g->player.pitch
+	pos = (r->draw_start - g->win_height / 2 - g->kid.pitch
 			+ r->line_height / 2) * step;
 	y = r->draw_start;
 	while (y < r->draw_end)

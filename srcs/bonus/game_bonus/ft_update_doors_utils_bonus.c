@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 14:18:50 by aghergut          #+#    #+#             */
-/*   Updated: 2026/05/06 14:18:52 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/06 16:36:43 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static int	ft_player_on_door_cell(t_game *game, int door_idx)
 	int	player_cell_x;
 	int	player_cell_y;
 
-	player_cell_x = (int)game->player.pos_x;
-	player_cell_y = (int)game->player.pos_y;
+	player_cell_x = (int)game->kid.pos_x;
+	player_cell_y = (int)game->kid.pos_y;
 	return (player_cell_x == game->doors[door_idx].map_x
 		&& player_cell_y == game->doors[door_idx].map_y);
 }

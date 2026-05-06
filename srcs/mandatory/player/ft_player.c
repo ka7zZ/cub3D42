@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 14:15:26 by aghergut          #+#    #+#             */
-/*   Updated: 2026/05/06 14:15:29 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/06 16:39:04 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 static void	ft_apply_direction(t_game *g,
 	double dir_x, double dir_y, t_vector plane)
 {
-	g->player.dir_x = dir_x;
-	g->player.dir_y = dir_y;
-	g->player.plane_x = plane.x;
-	g->player.plane_y = plane.y;
+	g->kid.dir_x = dir_x;
+	g->kid.dir_y = dir_y;
+	g->kid.pln_x = plane.x;
+	g->kid.pln_y = plane.y;
 }
 
 void	ft_set_player_direction(t_game *game, char direction)
@@ -63,8 +63,8 @@ void	ft_find_player_spawn(t_game *game)
 			spawn = game->map.map[y][x];
 			if (spawn == 'N' || spawn == 'S' || spawn == 'E' || spawn == 'W')
 			{
-				game->player.pos_x = x + 0.5;
-				game->player.pos_y = y + 0.5;
+				game->kid.pos_x = x + 0.5;
+				game->kid.pos_y = y + 0.5;
 				ft_set_player_direction(game, spawn);
 				game->map.map[y][x] = '0';
 				return ;

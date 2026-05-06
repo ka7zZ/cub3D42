@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 14:19:59 by aghergut          #+#    #+#             */
-/*   Updated: 2026/05/06 14:20:01 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/06 16:36:43 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_draw_floor_ceiling_textured(t_game *game)
 	win_height = game->win_height;
 	ceiling_color = game->ceiling_color;
 	floor_color = game->floor_color;
-	horizon = win_height / 2 + game->player.pitch;
+	horizon = win_height / 2 + game->kid.pitch;
 	if (horizon < 0)
 		horizon = 0;
 	if (horizon > win_height)
