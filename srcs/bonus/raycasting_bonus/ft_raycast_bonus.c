@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 14:19:39 by aghergut          #+#    #+#             */
-/*   Updated: 2026/05/06 14:19:41 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/06 16:26:53 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ static void	ft_draw_columns(t_game *game)
 
 	win_width = game->win_width;
 	x = 0;
-	// PHASE 4: Unroll loop by 2 since RAYCAST_COLUMN_STEP=2 (process 2 rays per iteration)
 	while (x < win_width - 2)
 	{
 		ft_init_ray(&ray, game, x);
@@ -107,7 +106,6 @@ static void	ft_draw_columns(t_game *game)
 			x += RAYCAST_COLUMN_STEP;
 		}
 	}
-	// Cleanup remaining rays
 	while (x < win_width)
 	{
 		ft_init_ray(&ray, game, x);

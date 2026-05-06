@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 17:29:30 by vruiz-ru          #+#    #+#             */
-/*   Updated: 2026/05/06 14:26:42 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/06 16:27:43 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,30 +36,31 @@ void	ft_perform_dda(t_ray *ray, t_game *game)
 	}
 }
 
-static void	ft_copy_column(t_game *game, int from_x, int to_x)
+static void	ft_copy_column(t_game *game, int from_x, int to_x, int llen)
 {
 	int		y;
-	char	*src_base;
-	char	*dst_base;
+	char	*src;
+	char	*dst;
 	int		offset;
-	int		stride;
 
 	offset = game->graph.frame.bpp / 8;
-	stride = game->graph.frame.line_len;
-	src_base = game->graph.frame.addr + from_x * offset;
-	dst_base = game->graph.frame.addr + to_x * offset;
+	src = game->graph.frame.addr + from_x * offset;
+	dst = game->graph.frame.addr + to_x * offset;
 	y = 0;
 	while (y < game->graph.win_height - 3)
 	{
-		*(unsigned int *)(dst_base + y * stride) = *(unsigned int *)(src_base + y * stride);
-		*(unsigned int *)(dst_base + (y + 1) * stride) = *(unsigned int *)(src_base + (y + 1) * stride);
-		*(unsigned int *)(dst_base + (y + 2) * stride) = *(unsigned int *)(src_base + (y + 2) * stride);
-		*(unsigned int *)(dst_base + (y + 3) * stride) = *(unsigned int *)(src_base + (y + 3) * stride);
+		*(unsigned int *)(dst + y * llen) = *(unsigned int *)(src + y * llen);
+		offset = (y + 1) * llen;
+		*(unsigned int *)(dst + offset) = *(unsigned int *)(src + offset);
+		offset = (y + 2) * llen;
+		*(unsigned int *)(dst + offset) = *(unsigned int *)(src + offset);
+		offset = (y + 3) * llen;
+		*(unsigned int *)(dst + offset) = *(unsigned int *)(src + offset);
 		y += 4;
 	}
 	while (y < game->graph.win_height)
 	{
-		*(unsigned int *)(dst_base + y * stride) = *(unsigned int *)(src_base + y * stride);
+		*(unsigned int *)(dst + y * llen) = *(unsigned int *)(src + y * llen);
 		y++;
 	}
 }
@@ -80,7 +81,7 @@ void	ft_raycast_frame(t_game *game)
 		ft_calculate_wall_height(&ray, game);
 		ft_draw_wall_column(game, &ray, x);
 		if (RAYCAST_COLUMN_STEP == 2 && x + 1 < win_width)
-			ft_copy_column(game, x, x + 1);
+			ft_copy_column(game, x, x + 1, game->graph.frame.line_len);
 		x += RAYCAST_COLUMN_STEP;
 		if (x < win_width)
 		{
@@ -89,7 +90,7 @@ void	ft_raycast_frame(t_game *game)
 			ft_calculate_wall_height(&ray, game);
 			ft_draw_wall_column(game, &ray, x);
 			if (RAYCAST_COLUMN_STEP == 2 && x + 1 < win_width)
-				ft_copy_column(game, x, x + 1);
+				ft_copy_column(game, x, x + 1, game->graph.frame.line_len);
 			x += RAYCAST_COLUMN_STEP;
 		}
 	}
@@ -100,7 +101,7 @@ void	ft_raycast_frame(t_game *game)
 		ft_calculate_wall_height(&ray, game);
 		ft_draw_wall_column(game, &ray, x);
 		if (RAYCAST_COLUMN_STEP == 2 && x + 1 < win_width)
-			ft_copy_column(game, x, x + 1);
+			ft_copy_column(game, x, x + 1, game->graph.frame.line_len);
 		x += RAYCAST_COLUMN_STEP;
 	}
 	ft_draw_weapon_hud(game);
