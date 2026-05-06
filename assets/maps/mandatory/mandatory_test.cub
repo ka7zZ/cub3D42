@@ -1,0 +1,13 @@
+NO ./assets/ingame/room/wall1light.xpm
+SO ./assets/ingame/room/wall2light.xpm
+WE ./assets/ingame/room/wall3light.xpm
+EA ./assets/ingame/room/wall4light.xpm
+
+F 100,100,100
+C 140,180,220
+
+1111111111
+1000000001
+1011111101
+10N0000001
+1111111111
