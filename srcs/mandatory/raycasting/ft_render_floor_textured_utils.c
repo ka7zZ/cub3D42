@@ -6,13 +6,13 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 18:16:16 by vruiz-ru          #+#    #+#             */
-/*   Updated: 2026/05/06 15:06:07 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/06 18:10:22 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/mandatory/cub3d.h"
 
-static void	ft_fill_line_fast_unrolled(t_image *img, int y, int w, int color)
+static void	ft_fill_line(t_image *img, int y, int w, int color)
 {
 	int		x;
 	char	*base;
@@ -38,47 +38,42 @@ static void	ft_fill_line_fast_unrolled(t_image *img, int y, int w, int color)
 	}
 }
 
+static void	ft_fill_color(t_game *game, int *y, int plane, int color)
+{
+	t_image	*img;
+	int		win_width;
+
+	img = &game->graph.frame;
+	win_width = game->graph.win_width;
+	while (*y < plane - 3)
+	{
+		ft_fill_line(&game->graph.frame, *y, win_width, color);
+		ft_fill_line(&game->graph.frame, *y + 1, win_width, color);
+		ft_fill_line(&game->graph.frame, *y + 2, win_width, color);
+		ft_fill_line(&game->graph.frame, *y + 3, win_width, color);
+		*y += 4;
+	}
+	while (*y < plane)
+	{
+		ft_fill_line(&game->graph.frame, (*y)++, win_width, color);
+	}
+}
+
 void	ft_draw_floor_ceiling_textured(t_game *game)
 {
 	int		horizon;
 	int		y;
 	int		win_width;
 	int		win_height;
-	int		ceiling_color;
-	int		floor_color;
 
 	win_width = game->graph.win_width;
 	win_height = game->graph.win_height;
-	ceiling_color = game->render.ceiling_color;
-	floor_color = game->render.floor_color;
 	horizon = win_height / 2;
 	if (horizon < 0)
 		horizon = 0;
 	if (horizon > win_height)
 		horizon = win_height;
 	y = 0;
-	while (y < horizon - 3)
-	{
-		ft_fill_line_fast_unrolled(&game->graph.frame, y, win_width, ceiling_color);
-		ft_fill_line_fast_unrolled(&game->graph.frame, y + 1, win_width, ceiling_color);
-		ft_fill_line_fast_unrolled(&game->graph.frame, y + 2, win_width, ceiling_color);
-		ft_fill_line_fast_unrolled(&game->graph.frame, y + 3, win_width, ceiling_color);
-		y += 4;
-	}
-	while (y < horizon)
-	{
-		ft_fill_line_fast_unrolled(&game->graph.frame, y++, win_width, ceiling_color);
-	}
-	while (y < win_height - 3)
-	{
-		ft_fill_line_fast_unrolled(&game->graph.frame, y, win_width, floor_color);
-		ft_fill_line_fast_unrolled(&game->graph.frame, y + 1, win_width, floor_color);
-		ft_fill_line_fast_unrolled(&game->graph.frame, y + 2, win_width, floor_color);
-		ft_fill_line_fast_unrolled(&game->graph.frame, y + 3, win_width, floor_color);
-		y += 4;
-	}
-	while (y < win_height)
-	{
-		ft_fill_line_fast_unrolled(&game->graph.frame, y++, win_width, floor_color);
-	}
+	ft_fill_color(game, &y, horizon, game->render.ceiling_color);
+	ft_fill_color(game, &y, win_height, game->render.floor_color);
 }

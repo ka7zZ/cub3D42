@@ -6,13 +6,13 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 14:20:17 by aghergut          #+#    #+#             */
-/*   Updated: 2026/05/06 16:38:19 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/06 18:12:04 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/bonus/cub3d_bonus.h"
 
-static void	ft_draw_wall_pixels_normal(t_game *g, t_ray *r, t_texture *tex, int x)
+static void	ft_draw_wall_px_on(t_game *g, t_ray *r, t_texture *tex, int x)
 {
 	double	step;
 	double	pos;
@@ -44,7 +44,7 @@ static void	ft_draw_wall_pixels_normal(t_game *g, t_ray *r, t_texture *tex, int 
 	}
 }
 
-static void	ft_draw_wall_pixels_dark(t_game *g, t_ray *r, t_texture *tex, int x)
+static void	ft_draw_wall_px_off(t_game *g, t_ray *r, t_texture *tex, int x)
 {
 	double	step;
 	double	pos;
@@ -89,7 +89,7 @@ void	ft_draw_wall_column(t_game *game, t_ray *ray, int x)
 		|| (ray->side == 1 && ray->dir_y < 0))
 		ray->tex_x = tex->width - ray->tex_x - 1;
 	if (ray->side == 1)
-		ft_draw_wall_pixels_dark(game, ray, tex, x);
+		ft_draw_wall_px_off(game, ray, tex, x);
 	else
-		ft_draw_wall_pixels_normal(game, ray, tex, x);
+		ft_draw_wall_px_on(game, ray, tex, x);
 }

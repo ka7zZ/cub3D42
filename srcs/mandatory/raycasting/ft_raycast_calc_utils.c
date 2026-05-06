@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 14:16:44 by aghergut          #+#    #+#             */
-/*   Updated: 2026/05/06 16:38:17 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/06 17:42:59 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,31 +40,36 @@ static void	ft_set_ray_steps(t_ray *ray, t_game *game)
 	}
 }
 
+static double	ft_check_dir(double inv_dir)
+{
+	if (inv_dir < 0)
+		return (-inv_dir);
+	return (inv_dir);
+}
+
 void	ft_init_ray(t_ray *ray, t_game *game, int x)
 {
 	double	inv_dir_x;
 	double	inv_dir_y;
 
-	// PHASE 4: Strength reduction - pre-compute 2 / win_width instead of repeated division
 	ray->cam_x = x * (2.0 / game->graph.win_width) - 1;
 	ray->dir_x = game->kid.dir_x + game->kid.pln_x * ray->cam_x;
 	ray->dir_y = game->kid.dir_y + game->kid.pln_y * ray->cam_x;
 	ray->map_x = (int)game->kid.pos_x;
 	ray->map_y = (int)game->kid.pos_y;
-	// PHASE 4: Strength reduction - compute reciprocal once instead of division in fabs()
 	if (ray->dir_x == 0)
 		ray->delta_dist_x = 1e30;
 	else
 	{
 		inv_dir_x = 1.0 / ray->dir_x;
-		ray->delta_dist_x = inv_dir_x < 0 ? -inv_dir_x : inv_dir_x;
+		ray->delta_dist_x = ft_check_dir(inv_dir_x);
 	}
 	if (ray->dir_y == 0)
 		ray->delta_dist_y = 1e30;
 	else
 	{
 		inv_dir_y = 1.0 / ray->dir_y;
-		ray->delta_dist_y = inv_dir_y < 0 ? -inv_dir_y : inv_dir_y;
+		ray->delta_dist_y = ft_check_dir(inv_dir_y);
 	}
 	ray->hit = 0;
 	ft_set_ray_steps(ray, game);
@@ -74,7 +79,6 @@ void	ft_calculate_wall_height(t_ray *ray, t_game *game)
 {
 	int	half_height;
 
-	// PHASE 4: Strength reduction - pre-compute win_height / 2 instead of repeated division
 	half_height = game->graph.win_height / 2;
 	if (ray->side == 0)
 		ray->perp_wall_dist = (ray->map_x - game->kid.pos_x
