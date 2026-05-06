@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_textures_load_utils_bonus.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 14:20:59 by aghergut          #+#    #+#             */
-/*   Updated: 2026/05/06 14:21:00 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/06 19:51:22 by vruiz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ int	ft_load_wall_textures(t_game *g)
 
 int	ft_load_floor_textures(t_game *g)
 {
-	return (ft_load_texture(g, &g->assets.tex_floor, "assets/ingame/hall/floor.xpm"));
+	return (ft_load_texture(g, &g->assets.tex_floor,
+			"assets/ingame/hall/floor.xpm"));
 }
 
 int	ft_load_gun_textures(t_game *g, char **gun_paths)
@@ -53,11 +54,14 @@ int	ft_load_gun_textures(t_game *g, char **gun_paths)
 
 int	ft_load_door_textures(t_game *g)
 {
-	if (!ft_load_texture(g, &g->assets.tex_door[0], "assets/ingame/door/door1.xpm"))
+	if (!ft_load_texture(g, &g->assets.tex_door[0],
+			"assets/ingame/door/door1.xpm"))
 		return (0);
-	if (!ft_load_texture(g, &g->assets.tex_door[1], "assets/ingame/door/door2.xpm"))
+	if (!ft_load_texture(g, &g->assets.tex_door[1],
+			"assets/ingame/door/door2.xpm"))
 		return (0);
-	if (!ft_load_texture(g, &g->assets.tex_door[2], "assets/ingame/door/door3.xpm"))
+	if (!ft_load_texture(g, &g->assets.tex_door[2],
+			"assets/ingame/door/door3.xpm"))
 		return (0);
 	return (ft_load_texture(g, &g->assets.tex_door[3],
 			"assets/ingame/door/door4.xpm"));

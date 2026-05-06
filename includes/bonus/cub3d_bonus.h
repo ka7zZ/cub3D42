@@ -94,4 +94,11 @@ void		ft_draw_radar_map(t_game *game, int radar_x,
 void		ft_draw_player_on_radar(t_game *game, int x, int y, int size);
 void		ft_draw_direction_on_radar(t_game *game, int x, int y, int size);
 
+
+void ft_draw_player_on_radar(t_game *game, int radar_x, int radar_y, int radar_size);
+void ft_draw_direction_on_radar(t_game *game, int radar_x, int radar_y, int radar_size);
+void ft_perform_dda(t_ray *ray, t_game *game);
+int ft_door_blocks_ray(t_game *game, t_ray *ray);
+
+void ft_fill_line_fast_unrolled(t_image *img, int y, int width, int color);
 #endif

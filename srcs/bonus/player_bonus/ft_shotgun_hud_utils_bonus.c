@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_shotgun_hud_utils_bonus.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 14:19:13 by aghergut          #+#    #+#             */
-/*   Updated: 2026/05/06 14:19:14 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/06 19:39:42 by vruiz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ static void	ft_draw_shotgun_row(t_game *game, t_texture *tex, int y)
 		tex_y = (y * tex->height) / 300;
 		color = ft_get_texture_color(tex, tex_x, tex_y);
 		if ((color & 0xFF000000) != 0xFF000000)
-			ft_put_pixel(&game->graph.frame, game->graph.win_width / 2 - 200 + x + 80,
-				game->graph.win_height - 300 + y, color);
+			ft_put_pixel(&game->graph.frame, game->graph.win_width / 2 - 200 + x
+				+ 80, game->graph.win_height - 300 + y, color);
 		x++;
 	}
 }

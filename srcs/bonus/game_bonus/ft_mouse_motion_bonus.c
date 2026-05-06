@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_mouse_motion_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 20:35:19 by vruiz-ru          #+#    #+#             */
-/*   Updated: 2026/05/06 16:39:04 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/06 19:35:19 by vruiz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,10 @@ static void	ft_apply_mouse_yaw(t_game *game, int delta_x)
 	rot = -delta_x * MOUSE_YAW_SENS;
 	old_dir_x = game->kid.dir_x;
 	old_pln_x = game->kid.pln_x;
-	game->kid.dir_x = old_dir_x * cos(rot)
-		- game->kid.dir_y * sin(rot);
-	game->kid.dir_y = old_dir_x * sin(rot)
-		+ game->kid.dir_y * cos(rot);
-	game->kid.pln_x = old_pln_x * cos(rot)
-		- game->kid.pln_y * sin(rot);
-	game->kid.pln_y = old_pln_x * sin(rot)
-		+ game->kid.pln_y * cos(rot);
+	game->kid.dir_x = old_dir_x * cos(rot) - game->kid.dir_y * sin(rot);
+	game->kid.dir_y = old_dir_x * sin(rot) + game->kid.dir_y * cos(rot);
+	game->kid.pln_x = old_pln_x * cos(rot) - game->kid.pln_y * sin(rot);
+	game->kid.pln_y = old_pln_x * sin(rot) + game->kid.pln_y * cos(rot);
 }
 
 static void	ft_apply_mouse_pitch(t_game *game, int delta_y)
@@ -72,8 +68,8 @@ int	ft_mouse_motion(int x, int y, t_game *game)
 	ft_apply_mouse_pitch(game, delta_y);
 	if (delta_x || delta_y)
 	{
-		mlx_mouse_move(game->graph.mlx, game->graph.win, game->graph.win_width / 2,
-			game->graph.win_height / 2);
+		mlx_mouse_move(game->graph.mlx, game->graph.win, game->graph.win_width
+			/ 2, game->graph.win_height / 2);
 		game->input.mouse_x = game->graph.win_width / 2;
 		game->input.mouse_y = game->graph.win_height / 2;
 	}

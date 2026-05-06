@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_map_validate_bonus.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 14:18:46 by aghergut          #+#    #+#             */
-/*   Updated: 2026/05/06 14:18:47 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/06 19:39:11 by vruiz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ int	ft_validate_map(t_game *game)
 		x = 0;
 		while (x < game->map.map_width)
 		{
-			if (ft_strchr("0NSEW", game->map.map[y][x]) || game->map.map[y][x] == 'D')
+			if (ft_strchr("0NSEW", game->map.map[y][x])
+				|| game->map.map[y][x] == 'D')
 			{
 				if (ft_cell_touches_void(game, y, x))
 					return (0);

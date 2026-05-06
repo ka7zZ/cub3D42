@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_render_wall_utils_bonus.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 14:20:17 by aghergut          #+#    #+#             */
-/*   Updated: 2026/05/06 18:12:04 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/06 19:51:19 by vruiz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,7 @@ static void	ft_draw_wall_px_on(t_game *g, t_ray *r, t_texture *tex, int x)
 	int		y;
 	int		tex_y;
 	int		color;
-	char	*frame_addr;
-	int		frame_line_len;
-	int		x_offset;
 
-	frame_addr = g->graph.frame.addr;
-	frame_line_len = g->graph.frame.line_len;
-	x_offset = x * (g->graph.frame.bpp / 8);
 	step = 1.0 * tex->height / r->line_height;
 	pos = (r->draw_start - g->graph.win_height / 2 - g->kid.pitch
 			+ r->line_height / 2) * step;
@@ -38,7 +32,8 @@ static void	ft_draw_wall_px_on(t_game *g, t_ray *r, t_texture *tex, int x)
 			&& (color & 0xFF000000) == 0xFF000000)
 			color = -1;
 		if (color != -1)
-			*(unsigned int *)(frame_addr + x_offset + y * frame_line_len) = color;
+			*(unsigned int *)(g->graph.frame.addr + x * (g->graph.frame.bpp / 8)
+					+ y * g->graph.frame.line_len) = color;
 		pos += step;
 		y++;
 	}
@@ -51,13 +46,7 @@ static void	ft_draw_wall_px_off(t_game *g, t_ray *r, t_texture *tex, int x)
 	int		y;
 	int		tex_y;
 	int		color;
-	char	*frame_addr;
-	int		frame_line_len;
-	int		x_offset;
 
-	frame_addr = g->graph.frame.addr;
-	frame_line_len = g->graph.frame.line_len;
-	x_offset = x * (g->graph.frame.bpp / 8);
 	step = 1.0 * tex->height / r->line_height;
 	pos = (r->draw_start - g->graph.win_height / 2 - g->kid.pitch
 			+ r->line_height / 2) * step;
@@ -70,10 +59,8 @@ static void	ft_draw_wall_px_off(t_game *g, t_ray *r, t_texture *tex, int x)
 			&& (color & 0xFF000000) == 0xFF000000)
 			color = -1;
 		if (color != -1)
-		{
-			color = (color >> 1) & 8355711;
-			*(unsigned int *)(frame_addr + x_offset + y * frame_line_len) = color;
-		}
+			*(unsigned int *)(g->graph.frame.addr + x * (g->graph.frame.bpp / 8)
+					+ y * g->graph.frame.line_len) = ((color >> 1) & 8355711);
 		pos += step;
 		y++;
 	}
@@ -85,8 +72,8 @@ void	ft_draw_wall_column(t_game *game, t_ray *ray, int x)
 
 	tex = ft_select_texture(game, ray);
 	ray->tex_x = (int)(ray->wall_x * (double)tex->width);
-	if ((ray->side == 0 && ray->dir_x > 0)
-		|| (ray->side == 1 && ray->dir_y < 0))
+	if ((ray->side == 0 && ray->dir_x > 0) || (ray->side == 1
+			&& ray->dir_y < 0))
 		ray->tex_x = tex->width - ray->tex_x - 1;
 	if (ray->side == 1)
 		ft_draw_wall_px_off(game, ray, tex, x);

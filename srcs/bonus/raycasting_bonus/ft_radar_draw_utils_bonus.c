@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_radar_draw_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 17:36:03 by vruiz-ru          #+#    #+#             */
-/*   Updated: 2026/05/06 16:36:43 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/06 19:42:42 by vruiz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ static void	ft_player_pixel_pos(t_game *game, int radar[3], int p[2])
 	if (off[1] < 0)
 		off[1] = 0;
 	p[0] = radar[1] + off[0] + (int)(game->kid.pos_x * radar[0]);
-	p[1] = radar[3] + off[1] + (int)((game->map.map_height - game->kid.pos_y) * radar[0]);
+	p[1] = radar[3] + off[1] + (int)((game->map.map_height - game->kid.pos_y)
+			* radar[0]);
 }
 
 void	ft_draw_player_on_radar(t_game *game, int radar_x, int radar_y,

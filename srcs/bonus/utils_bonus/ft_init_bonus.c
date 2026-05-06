@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_init_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 14:20:38 by aghergut          #+#    #+#             */
-/*   Updated: 2026/05/06 14:20:39 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/06 19:51:20 by vruiz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ void	ft_init_mlx(t_game *game)
 	if (!game->graph.frame.img)
 		ft_exit_error(game, "Image creation failed");
 	game->graph.frame.addr = mlx_get_data_addr(game->graph.frame.img,
-			&game->graph.frame.bpp, &game->graph.frame.line_len, &game->graph.frame.endian);
+			&game->graph.frame.bpp,
+			&game->graph.frame.line_len,
+			&game->graph.frame.endian);
 	game->z_buffer = (double *)malloc(sizeof(double) * game->graph.win_width);
 	if (!game->z_buffer)
 		ft_exit_error(game, "Z-buffer allocation failed");

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_render_floor_textured_utils_bonus.c             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 14:19:59 by aghergut          #+#    #+#             */
-/*   Updated: 2026/05/06 19:27:04 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/06 19:51:17 by vruiz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,47 +36,59 @@ static void	ft_fill_line(t_image *img, int y, int width, int color)
 	}
 }
 
+static void	ft_draw_ceiling_loop(t_game *game, int *y, int horizon)
+{
+	while (*y < horizon - 3)
+	{
+		ft_fill_line(&game->graph.frame, *y,
+			game->graph.win_width, game->render.ceiling_color);
+		ft_fill_line(&game->graph.frame, *y + 1,
+			game->graph.win_width, game->render.ceiling_color);
+		ft_fill_line(&game->graph.frame, *y + 2,
+			game->graph.win_width, game->render.ceiling_color);
+		ft_fill_line(&game->graph.frame, *y + 3,
+			game->graph.win_width, game->render.ceiling_color);
+		*y += 4;
+	}
+	while (*y < horizon)
+	{
+		ft_fill_line(&game->graph.frame, (*y)++,
+			game->graph.win_width, game->render.ceiling_color);
+	}
+}
+
+static void	ft_draw_floor_loop(t_game *game, int *y)
+{
+	while (*y < game->graph.win_height - 3)
+	{
+		ft_fill_line(&game->graph.frame, *y,
+			game->graph.win_width, game->render.floor_color);
+		ft_fill_line(&game->graph.frame, *y + 1,
+			game->graph.win_width, game->render.floor_color);
+		ft_fill_line(&game->graph.frame, *y + 2,
+			game->graph.win_width, game->render.floor_color);
+		ft_fill_line(&game->graph.frame, *y + 3,
+			game->graph.win_width, game->render.floor_color);
+		*y += 4;
+	}
+	while (*y < game->graph.win_height)
+	{
+		ft_fill_line(&game->graph.frame, (*y)++,
+			game->graph.win_width, game->render.floor_color);
+	}
+}
+
 void	ft_draw_floor_ceiling_textured(t_game *game)
 {
-	int		horizon;
-	int		y;
-	int		win_width;
-	int		win_height;
-	int		ceiling_color;
-	int		floor_color;
+	int	horizon;
+	int	y;
 
-	win_width = game->graph.win_width;
-	win_height = game->graph.win_height;
-	ceiling_color = game->render.ceiling_color;
-	floor_color = game->render.floor_color;
-	horizon = win_height / 2 + game->kid.pitch;
+	horizon = game->graph.win_height / 2 + game->kid.pitch;
 	if (horizon < 0)
 		horizon = 0;
-	if (horizon > win_height)
-		horizon = win_height;
+	if (horizon > game->graph.win_height)
+		horizon = game->graph.win_height;
 	y = 0;
-	while (y < horizon - 3)
-	{
-		ft_fill_line_fast_unrolled(&game->frame, y, win_width, ceiling_color);
-		ft_fill_line_fast_unrolled(&game->frame, y + 1, win_width, ceiling_color);
-		ft_fill_line_fast_unrolled(&game->frame, y + 2, win_width, ceiling_color);
-		ft_fill_line_fast_unrolled(&game->frame, y + 3, win_width, ceiling_color);
-		y += 4;
-	}
-	while (y < horizon)
-	{
-		ft_fill_line_fast_unrolled(&game->frame, y++, win_width, ceiling_color);
-	}
-	while (y < win_height - 3)
-	{
-		ft_fill_line_fast_unrolled(&game->frame, y, win_width, floor_color);
-		ft_fill_line_fast_unrolled(&game->frame, y + 1, win_width, floor_color);
-		ft_fill_line_fast_unrolled(&game->frame, y + 2, win_width, floor_color);
-		ft_fill_line_fast_unrolled(&game->frame, y + 3, win_width, floor_color);
-		y += 4;
-	}
-	while (y < win_height)
-	{
-		ft_fill_line_fast_unrolled(&game->frame, y++, win_width, floor_color);
-	}
+	ft_draw_ceiling_loop(game, &y, horizon);
+	ft_draw_floor_loop(game, &y);
 }

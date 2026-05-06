@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_radar_map_utils_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 14:19:33 by aghergut          #+#    #+#             */
-/*   Updated: 2026/05/06 14:19:34 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/06 19:46:58 by vruiz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,36 @@ static void	ft_draw_cell(t_game *game, int pos[2], int size, int color)
 	}
 }
 
-void	ft_draw_radar_map(t_game *game, int radar_x,
-		int radar_y, int radar_size)
+static void	ft_draw_cells_loop(t_game *game, int cell, int off[2], int radar[2])
 {
 	int	m[2];
 	int	p[2];
+
+	m[1] = 0;
+	while (m[1] < game->map.map_height)
+	{
+		m[0] = 0;
+		while (m[0] < game->map.map_width)
+		{
+			p[0] = radar[0] + off[0] + m[0] * cell;
+			p[1] = radar[1] + off[1] + (game->map.map_height - 1 - m[1]) * cell;
+			ft_draw_cell(game, p, cell,
+				ft_cell_color(game->map.map[m[1]][m[0]]));
+			m[0]++;
+		}
+		m[1]++;
+	}
+}
+
+void	ft_draw_radar_map(t_game *game, int radar_x, int radar_y,
+		int radar_size)
+{
 	int	off[2];
 	int	cell;
+	int	radar[2];
 
+	radar[0] = radar_x;
+	radar[1] = radar_y;
 	cell = ft_cell_size(game, radar_size);
 	off[0] = (radar_size - game->map.map_width * cell) / 2;
 	off[1] = (radar_size - game->map.map_height * cell) / 2;
@@ -68,17 +90,5 @@ void	ft_draw_radar_map(t_game *game, int radar_x,
 		off[0] = 0;
 	if (off[1] < 0)
 		off[1] = 0;
-	m[1] = 0;
-	while (m[1] < game->map.map_height)
-	{
-		m[0] = 0;
-		while (m[0] < game->map.map_width)
-		{
-			p[0] = radar_x + off[0] + m[0] * cell;
-			p[1] = radar_y + off[1] + (game->map.map_height - 1 - m[1]) * cell;
-			ft_draw_cell(game, p, cell, ft_cell_color(game->map.map[m[1]][m[0]]));
-			m[0]++;
-		}
-		m[1]++;
-	}
+	ft_draw_cells_loop(game, cell, off, radar);
 }
