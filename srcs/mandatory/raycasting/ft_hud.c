@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 14:16:37 by aghergut          #+#    #+#             */
-/*   Updated: 2026/05/06 14:26:42 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/06 16:54:02 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,19 +61,22 @@ void	ft_draw_crosshair(t_game *game)
 static void	ft_draw_weapon_row(t_game *game, t_texture *tex, int y)
 {
 	int	x;
-	int	tex_x;
-	int	tex_y;
+	int	buf_x;
+	int	buf_y;
 	int	color;
 
 	x = 0;
 	while (x < 400)
 	{
-		tex_x = (x * tex->width) / 400;
-		tex_y = (y * tex->height) / 300;
-		color = ft_get_texture_color(tex, tex_x, tex_y);
+		buf_x = (x * tex->width) / 400;
+		buf_y = (y * tex->height) / 300;
+		color = ft_get_texture_color(tex, buf_x, buf_y);
 		if ((color & 0xFF000000) != 0xFF000000)
-			ft_put_pixel(&game->graph.frame, game->graph.win_width / 2 - 200 + x + 80,
-				game->graph.win_height - 300 + y, color);
+		{
+			buf_x = game->graph.win_width / 2 - 200 + x + 80;
+			buf_y = game->graph.win_height - 300 + y;
+			ft_put_pixel(&game->graph.frame, buf_x, buf_y, color);
+		}
 		x++;
 	}
 }
