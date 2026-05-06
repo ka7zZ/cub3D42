@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_rotation.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 18:11:23 by vruiz-ru          #+#    #+#             */
-/*   Updated: 2026/05/06 16:38:56 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/06 18:20:25 by vruiz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,7 @@ void	ft_update_player(t_game *game)
 	double	cos_rot;
 	double	sin_rot;
 
-	if (game->input.key_w)
-		ft_move_forward(game);
-	if (game->input.key_s)
-		ft_move_backward(game);
-	if (game->input.key_a)
-		ft_move_left(game);
-	if (game->input.key_d)
-		ft_move_right(game);
+	ft_move_player(game);
 	rot_step = ROT_SPEED * game->cron.delta_t;
 	if (game->input.key_left)
 	{

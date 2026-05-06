@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 15:48:13 by vruiz-ru          #+#    #+#             */
-/*   Updated: 2026/05/06 14:22:01 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/06 18:20:25 by vruiz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,9 @@ int			ft_focus_out(t_game *game);
 int			ft_focus_in(t_game *game);
 
 int			ft_parse_map(t_game *game, char *filename);
+void		ft_set_player_direction(t_game *game, char direction);
 void		ft_find_player_spawn(t_game *game);
-void		ft_floodfill(char **map, t_mapxy *point, int x, int y);
+void		ft_move_player(t_game *game);
 
 int			ft_load_textures(t_game *game);
 void		ft_free_textures(t_game *game);
