@@ -1,6 +1,6 @@
 
 SO ./assets/ingame/room/wall5lights off.xpm
-WE      ./assets/ingame/room/wall5lights off.xpm
+WE      ./assets/ingame/room/wall5lightsoff.xpm
 EA ./assets/ingame/room/wall5lights off.xpm
 
 F 175,205,225
