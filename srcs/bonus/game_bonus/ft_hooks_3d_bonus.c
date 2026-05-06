@@ -6,7 +6,7 @@
 /*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 20:34:54 by vruiz-ru          #+#    #+#             */
-/*   Updated: 2026/05/05 20:34:56 by vruiz-ru         ###   ########.fr       */
+/*   Updated: 2026/05/06 20:08:48 by vruiz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 int	ft_close_game(t_game *game)
 {
+	(void)game;
 	ft_free_game(game);
-	_exit(0);
+	exit(0);
 }
 
 int	ft_mouse_press(int button, int x, int y, t_game *game)

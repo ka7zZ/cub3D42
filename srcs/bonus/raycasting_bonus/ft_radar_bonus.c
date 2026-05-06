@@ -6,7 +6,7 @@
 /*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 17:45:12 by vruiz-ru          #+#    #+#             */
-/*   Updated: 2026/05/05 17:47:22 by vruiz-ru         ###   ########.fr       */
+/*   Updated: 2026/05/06 20:23:30 by vruiz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,6 @@ void	ft_draw_radar(t_game *game)
 	radar_x = game->graph.win_width - radar_size - padding;
 	radar_y = padding;
 	ft_draw_radar_map(game, radar_x, radar_y, radar_size);
-	ft_draw_player_on_radar(game, radar_x, radar_y, radar_size);
+	ft_draw_kid_on_radar(game, radar_x, radar_y, radar_size);
 	ft_draw_direction_on_radar(game, radar_x, radar_y, radar_size);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_textures_free_utils_bonus.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 14:20:53 by aghergut          #+#    #+#             */
-/*   Updated: 2026/05/06 14:20:55 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/06 20:22:43 by vruiz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_free_dual_wall_textures(t_game *g)
 	}
 }
 
-void	ft_free_array_textures(t_game *g, t_texture *arr, int n)
+void	ft_free_array_tex(t_game *g, t_texture *arr, int n)
 {
 	int	i;
 

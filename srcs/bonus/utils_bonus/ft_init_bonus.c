@@ -6,7 +6,7 @@
 /*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 14:20:38 by aghergut          #+#    #+#             */
-/*   Updated: 2026/05/06 19:51:20 by vruiz-ru         ###   ########.fr       */
+/*   Updated: 2026/05/06 20:35:54 by vruiz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_init_mlx(t_game *game)
 	game->graph.win_width = screen_width;
 	game->graph.win_height = screen_height;
 	game->graph.win = mlx_new_window(game->graph.mlx, game->graph.win_width,
-			game->graph.win_height, "so_long 3D");
+			game->graph.win_height, "cub3D");
 	if (!game->graph.win)
 		ft_exit_error(game, "Window creation failed");
 	game->graph.frame.img = mlx_new_image(game->graph.mlx,

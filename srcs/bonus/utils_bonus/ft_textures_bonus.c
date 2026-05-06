@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_textures_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 14:20:49 by aghergut          #+#    #+#             */
-/*   Updated: 2026/05/06 14:20:50 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/06 20:22:43 by vruiz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,6 @@ void	ft_free_textures(t_game *game)
 	ft_free_dual_wall_textures(game);
 	if (game->assets.tex_floor.img)
 		mlx_destroy_image(game->graph.mlx, game->assets.tex_floor.img);
-	ft_free_array_textures(game, game->assets.tex_shotgun, 15);
-	ft_free_array_textures(game, game->assets.tex_door, 4);
+	ft_free_array_tex(game, game->assets.tex_shotgun, 15);
+	ft_free_array_tex(game, game->assets.tex_door, 4);
 }

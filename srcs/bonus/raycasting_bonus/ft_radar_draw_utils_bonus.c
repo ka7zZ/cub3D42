@@ -6,7 +6,7 @@
 /*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 17:36:03 by vruiz-ru          #+#    #+#             */
-/*   Updated: 2026/05/06 19:42:42 by vruiz-ru         ###   ########.fr       */
+/*   Updated: 2026/05/06 20:23:30 by vruiz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	ft_player_pixel_pos(t_game *game, int radar[3], int p[2])
 			* radar[0]);
 }
 
-void	ft_draw_player_on_radar(t_game *game, int radar_x, int radar_y,
+void	ft_draw_kid_on_radar(t_game *game, int radar_x, int radar_y,
 		int radar_size)
 {
 	int	radar[4];
