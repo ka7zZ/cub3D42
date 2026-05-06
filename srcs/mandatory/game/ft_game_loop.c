@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 17:28:35 by vruiz-ru          #+#    #+#             */
-/*   Updated: 2026/05/06 14:23:49 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/06 15:05:12 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ static int	ft_update_delta_time(t_game *game)
 	long long	now;
 
 	now = ft_now_us();
-	if (game->timing.last_frame_us == 0)
-		game->timing.delta_time = 0.016;
+	if (game->cron.lframe_us == 0)
+		game->cron.delta_t = 0.016;
 	else
-		game->timing.delta_time = (double)(now - game->timing.last_frame_us) / 1000000.0;
-	if (game->timing.delta_time < MIN_DELTA_TIME)
-		game->timing.delta_time = MIN_DELTA_TIME;
-	if (game->timing.delta_time > MAX_DELTA_TIME)
-		game->timing.delta_time = MAX_DELTA_TIME;
-	game->timing.last_frame_us = now;
+		game->cron.delta_t = (double)(now - game->cron.lframe_us) / 1000000.0;
+	if (game->cron.delta_t < MIN_DELTA_TIME)
+		game->cron.delta_t = MIN_DELTA_TIME;
+	if (game->cron.delta_t > MAX_DELTA_TIME)
+		game->cron.delta_t = MAX_DELTA_TIME;
+	game->cron.lframe_us = now;
 	return (0);
 }
 
@@ -89,7 +89,7 @@ int	ft_game_loop(t_game *game)
 		ft_update_delta_time(game);
 		delta_calc_time = ft_now_us() - frame_start;
 		
-		game->timing.frame_count++;
+		game->cron.frame_count++;
 		ft_update_player(game);
 		player_update_time = ft_now_us() - frame_start - delta_calc_time;
 		

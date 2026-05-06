@@ -6,13 +6,13 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 18:16:16 by vruiz-ru          #+#    #+#             */
-/*   Updated: 2026/05/06 14:26:42 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/06 15:06:07 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/mandatory/cub3d.h"
 
-static void	ft_fill_line_fast_unrolled(t_image *img, int y, int width, int color)
+static void	ft_fill_line_fast_unrolled(t_image *img, int y, int w, int color)
 {
 	int		x;
 	char	*base;
@@ -23,7 +23,7 @@ static void	ft_fill_line_fast_unrolled(t_image *img, int y, int width, int color
 	stride = img->line_len;
 	base = img->addr + (y * stride);
 	x = 0;
-	while (x < width - 3)
+	while (x < w - 3)
 	{
 		*(unsigned int *)(base + x * pixel_size) = color;
 		*(unsigned int *)(base + (x + 1) * pixel_size) = color;
@@ -31,7 +31,7 @@ static void	ft_fill_line_fast_unrolled(t_image *img, int y, int width, int color
 		*(unsigned int *)(base + (x + 3) * pixel_size) = color;
 		x += 4;
 	}
-	while (x < width)
+	while (x < w)
 	{
 		*(unsigned int *)(base + x * pixel_size) = color;
 		x++;

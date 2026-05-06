@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 15:49:02 by vruiz-ru          #+#    #+#             */
-/*   Updated: 2026/05/06 14:26:42 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/06 15:05:16 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ typedef struct s_player
 	double	pos_y;
 	double	dir_x;
 	double	dir_y;
-	double	plane_x;
-	double	plane_y;
+	double	pln_x;
+	double	pln_y;
 
 }	t_player;
 
@@ -60,7 +60,7 @@ typedef struct s_texture
 
 typedef struct s_ray
 {
-	double	camera_x;
+	double	cam_x;
 	double	dir_x;
 	double	dir_y;
 	int		map_x;
@@ -133,8 +133,8 @@ typedef struct s_input
 // Frame Timing
 typedef struct s_timing
 {
-	double		delta_time;
-	long long	last_frame_us;
+	double		delta_t;
+	long long	lframe_us;
 	int			frame_count;
 }	t_timing;
 
@@ -153,9 +153,9 @@ typedef struct s_game
 	t_mlx_context	graph;
 	t_map_data		map;
 	t_assets		assets;
-	t_player		player;
+	t_player		kid;
 	t_input			input;
-	t_timing		timing;
+	t_timing		cron;
 	t_render_config	render;
 	bool			is_pressed;
 }	t_game;
