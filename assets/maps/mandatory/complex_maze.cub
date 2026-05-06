@@ -1,12 +1,12 @@
 
-SO ./assets/ingame/room/wall5lights off.xpm
+SO ./assets/ingame/room/wall5lightsoff.xpm
 WE      ./assets/ingame/room/wall5lightsoff.xpm
-EA ./assets/ingame/room/wall5lights off.xpm
+EA ./assets/ingame/room/wall5lightsoff.xpm
 
 F 175,205,225
 C 175,205,235
 
-NO ./assets/ingame/room/wall5lights off.xpm
+NO ./assets/ingame/room/wall5lightsoff.xpm
 1111111111111111111111111111
 1000001000000000100000000001
 101110101111111010111111110111111111111111111111
