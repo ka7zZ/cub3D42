@@ -19,12 +19,12 @@ void	ft_init_doors(t_game *game)
 
 	game->door_count = 0;
 	y = 0;
-	while (y < game->map_height)
+	while (y < game->map.map_height)
 	{
 		x = 0;
-		while (x < game->map_width)
+		while (x < game->map.map_width)
 		{
-			if (game->map[y][x] == 'D' && game->door_count < MAX_DOORS)
+			if (game->map.map[y][x] == 'D' && game->door_count < MAX_DOORS)
 			{
 				game->doors[game->door_count].map_x = x;
 				game->doors[game->door_count].map_y = y;

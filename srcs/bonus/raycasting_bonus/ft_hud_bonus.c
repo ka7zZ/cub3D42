@@ -19,12 +19,12 @@ static void	ft_draw_crosshair_h(t_game *game, int cx, int cy)
 	i = 4;
 	while (i <= 14)
 	{
-		ft_put_pixel(&game->frame, cx + i, cy - 1, 0x000000);
-		ft_put_pixel(&game->frame, cx + i, cy + 1, 0x000000);
-		ft_put_pixel(&game->frame, cx - i, cy - 1, 0x000000);
-		ft_put_pixel(&game->frame, cx - i, cy + 1, 0x000000);
-		ft_put_pixel(&game->frame, cx + i, cy, 0xFFFFFF);
-		ft_put_pixel(&game->frame, cx - i, cy, 0xFFFFFF);
+		ft_put_pixel(&game->graph.frame, cx + i, cy - 1, 0x000000);
+		ft_put_pixel(&game->graph.frame, cx + i, cy + 1, 0x000000);
+		ft_put_pixel(&game->graph.frame, cx - i, cy - 1, 0x000000);
+		ft_put_pixel(&game->graph.frame, cx - i, cy + 1, 0x000000);
+		ft_put_pixel(&game->graph.frame, cx + i, cy, 0xFFFFFF);
+		ft_put_pixel(&game->graph.frame, cx - i, cy, 0xFFFFFF);
 		i++;
 	}
 }
@@ -36,12 +36,12 @@ static void	ft_draw_crosshair_v(t_game *game, int cx, int cy)
 	i = 4;
 	while (i <= 14)
 	{
-		ft_put_pixel(&game->frame, cx - 1, cy + i, 0x000000);
-		ft_put_pixel(&game->frame, cx + 1, cy + i, 0x000000);
-		ft_put_pixel(&game->frame, cx - 1, cy - i, 0x000000);
-		ft_put_pixel(&game->frame, cx + 1, cy - i, 0x000000);
-		ft_put_pixel(&game->frame, cx, cy + i, 0xFFFFFF);
-		ft_put_pixel(&game->frame, cx, cy - i, 0xFFFFFF);
+		ft_put_pixel(&game->graph.frame, cx - 1, cy + i, 0x000000);
+		ft_put_pixel(&game->graph.frame, cx + 1, cy + i, 0x000000);
+		ft_put_pixel(&game->graph.frame, cx - 1, cy - i, 0x000000);
+		ft_put_pixel(&game->graph.frame, cx + 1, cy - i, 0x000000);
+		ft_put_pixel(&game->graph.frame, cx, cy + i, 0xFFFFFF);
+		ft_put_pixel(&game->graph.frame, cx, cy - i, 0xFFFFFF);
 		i++;
 	}
 }
@@ -51,9 +51,9 @@ void	ft_draw_crosshair(t_game *game)
 	int	cx;
 	int	cy;
 
-	cx = game->win_width / 2;
-	cy = game->win_height / 2;
+	cx = game->graph.win_width / 2;
+	cy = game->graph.win_height / 2;
 	ft_draw_crosshair_h(game, cx, cy);
 	ft_draw_crosshair_v(game, cx, cy);
-	ft_put_pixel(&game->frame, cx, cy, 0xFFFFFF);
+	ft_put_pixel(&game->graph.frame, cx, cy, 0xFFFFFF);
 }

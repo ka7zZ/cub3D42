@@ -31,12 +31,12 @@ int	ft_init_stage_assets_world(t_game *game)
 
 void	ft_init_stage_runtime(t_game *game)
 {
-	mlx_mouse_hide(game->mlx, game->win);
-	mlx_mouse_move(game->mlx, game->win, game->win_width / 2,
-		game->win_height / 2);
-	game->mouse_x = game->win_width / 2;
-	game->mouse_y = game->win_height / 2;
-	game->frame_count = 0;
-	game->delta_time = 0.016;
-	game->last_frame_us = 0;
+	mlx_mouse_hide(game->graph.mlx, game->graph.win);
+	mlx_mouse_move(game->graph.mlx, game->graph.win, game->graph.win_width / 2,
+		game->graph.win_height / 2);
+	game->input.mouse_x = game->graph.win_width / 2;
+	game->input.mouse_y = game->graph.win_height / 2;
+	game->cron.frame_count = 0;
+	game->cron.delta_time = 0.016;
+	game->cron.last_frame_us = 0;
 }

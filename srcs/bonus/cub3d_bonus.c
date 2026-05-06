@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 14:21:10 by aghergut          #+#    #+#             */
-/*   Updated: 2026/05/06 14:21:11 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/06 18:59:27 by vruiz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,14 @@ static char	*ft_resolve_map_path(char *input)
 
 static void	ft_set_hooks(t_game *game)
 {
-	mlx_loop_hook(game->mlx, ft_game_loop, game);
-	mlx_hook(game->win, KeyPress, KeyPressMask, ft_key_press, game);
-	mlx_hook(game->win, KeyRelease, KeyReleaseMask, ft_key_release, game);
-	mlx_hook(game->win, DestroyNotify, NoEventMask, ft_close_game, game);
-	mlx_hook(game->win, ButtonPress, ButtonPressMask, ft_mouse_press, game);
-	mlx_hook(game->win, MotionNotify, PointerMotionMask, ft_mouse_motion, game);
+	mlx_loop_hook(game->graph.mlx, ft_game_loop, game);
+	mlx_hook(game->graph.win, KeyPress, KeyPressMask, ft_key_press, game);
+	mlx_hook(game->graph.win, KeyRelease, KeyReleaseMask, ft_key_release, game);
+	mlx_hook(game->graph.win, DestroyNotify, NoEventMask, ft_close_game, game);
+	mlx_hook(game->graph.win, ButtonPress, ButtonPressMask, ft_mouse_press,
+		game);
+	mlx_hook(game->graph.win, MotionNotify, PointerMotionMask, ft_mouse_motion,
+		game);
 }
 
 int	main(int argc, char **argv)
@@ -71,6 +73,6 @@ int	main(int argc, char **argv)
 	}
 	free(map_path);
 	ft_set_hooks(&game);
-	mlx_loop(game.mlx);
+	mlx_loop(game.graph.mlx);
 	return (0);
 }

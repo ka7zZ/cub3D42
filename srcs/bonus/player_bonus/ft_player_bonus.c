@@ -55,19 +55,19 @@ void	ft_find_player_spawn(t_game *game)
 	char	spawn;
 
 	y = 0;
-	while (y < game->map_height)
+	while (y < game->map.map_height)
 	{
 		x = 0;
-		while (x < game->map_width)
+		while (x < game->map.map_width)
 		{
-			spawn = game->map[y][x];
+			spawn = game->map.map[y][x];
 			if (spawn == 'N' || spawn == 'S' || spawn == 'E' || spawn == 'W')
 			{
 				game->kid.pos_x = x + 0.5;
 				game->kid.pos_y = y + 0.5;
 				game->kid.pitch = 0;
 				ft_set_player_direction(game, spawn);
-				game->map[y][x] = '0';
+				game->map.map[y][x] = '0';
 				return ;
 			}
 			x++;

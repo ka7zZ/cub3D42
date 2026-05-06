@@ -45,8 +45,8 @@ static void	ft_draw_shotgun_row(t_game *game, t_texture *tex, int y)
 		tex_y = (y * tex->height) / 300;
 		color = ft_get_texture_color(tex, tex_x, tex_y);
 		if ((color & 0xFF000000) != 0xFF000000)
-			ft_put_pixel(&game->frame, game->win_width / 2 - 200 + x + 80,
-				game->win_height - 300 + y, color);
+			ft_put_pixel(&game->graph.frame, game->graph.win_width / 2 - 200 + x + 80,
+				game->graph.win_height - 300 + y, color);
 		x++;
 	}
 }
@@ -56,7 +56,7 @@ void	ft_draw_shotgun_hud(t_game *game)
 	t_texture	*tex;
 	int			y;
 
-	tex = &game->tex_shotgun[ft_shotgun_tex_index(game)];
+	tex = &game->assets.tex_shotgun[ft_shotgun_tex_index(game)];
 	if (!tex->img)
 		return ;
 	y = 0;

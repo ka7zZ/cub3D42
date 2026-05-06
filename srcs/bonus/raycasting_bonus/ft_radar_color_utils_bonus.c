@@ -30,10 +30,10 @@ int	ft_get_pixel_color(t_game *game, int x, int y)
 {
 	char	*pixel;
 
-	if (x < 0 || x >= game->win_width || y < 0 || y >= game->win_height)
+	if (x < 0 || x >= game->graph.win_width || y < 0 || y >= game->graph.win_height)
 		return (0);
-	pixel = game->frame.addr
-		+ (y * game->frame.line_len + x * (game->frame.bpp / 8));
+	pixel = game->graph.frame.addr
+		+ (y * game->graph.frame.line_len + x * (game->graph.frame.bpp / 8));
 	return (*(unsigned int *)pixel);
 }
 
@@ -42,9 +42,9 @@ void	ft_put_radar_pixel(t_game *game, int x, int y, int color)
 	int	bg_color;
 	int	blended_color;
 
-	if (x < 0 || x >= game->win_width || y < 0 || y >= game->win_height)
+	if (x < 0 || x >= game->graph.win_width || y < 0 || y >= game->graph.win_height)
 		return ;
 	bg_color = ft_get_pixel_color(game, x, y);
 	blended_color = ft_blend_color(bg_color, color, 0.7);
-	ft_put_pixel(&game->frame, x, y, blended_color);
+	ft_put_pixel(&game->graph.frame, x, y, blended_color);
 }

@@ -27,14 +27,14 @@ int	ft_validate_chars_and_spawn(t_game *game)
 
 	spawn_count = 0;
 	y = 0;
-	while (y < game->map_height)
+	while (y < game->map.map_height)
 	{
 		x = 0;
-		while (x < game->map_width)
+		while (x < game->map.map_width)
 		{
-			if (!ft_is_valid_map_char(game->map[y][x]))
+			if (!ft_is_valid_map_char(game->map.map[y][x]))
 				return (0);
-			if (ft_strchr("NSEW", game->map[y][x]))
+			if (ft_strchr("NSEW", game->map.map[y][x]))
 				spawn_count++;
 			x++;
 		}
@@ -47,11 +47,11 @@ static int	ft_cell_touches_void(t_game *game, int y, int x)
 {
 	if (y == 0 || x == 0)
 		return (1);
-	if (y == game->map_height - 1 || x == game->map_width - 1)
+	if (y == game->map.map_height - 1 || x == game->map.map_width - 1)
 		return (1);
-	if (game->map[y - 1][x] == ' ' || game->map[y + 1][x] == ' ')
+	if (game->map.map[y - 1][x] == ' ' || game->map.map[y + 1][x] == ' ')
 		return (1);
-	if (game->map[y][x - 1] == ' ' || game->map[y][x + 1] == ' ')
+	if (game->map.map[y][x - 1] == ' ' || game->map.map[y][x + 1] == ' ')
 		return (1);
 	return (0);
 }
@@ -62,12 +62,12 @@ int	ft_validate_map(t_game *game)
 	int	x;
 
 	y = 0;
-	while (y < game->map_height)
+	while (y < game->map.map_height)
 	{
 		x = 0;
-		while (x < game->map_width)
+		while (x < game->map.map_width)
 		{
-			if (ft_strchr("0NSEW", game->map[y][x]) || game->map[y][x] == 'D')
+			if (ft_strchr("0NSEW", game->map.map[y][x]) || game->map.map[y][x] == 'D')
 			{
 				if (ft_cell_touches_void(game, y, x))
 					return (0);

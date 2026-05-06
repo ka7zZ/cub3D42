@@ -15,33 +15,33 @@
 static void	ft_set_move_key(int keycode, t_game *game)
 {
 	if (keycode == XK_w || keycode == XK_W)
-		game->key_w = 1;
+		game->input.key_w = 1;
 	if (keycode == XK_s || keycode == XK_S)
-		game->key_s = 1;
+		game->input.key_s = 1;
 	if (keycode == XK_a || keycode == XK_A)
-		game->key_a = 1;
+		game->input.key_a = 1;
 	if (keycode == XK_d || keycode == XK_D)
-		game->key_d = 1;
+		game->input.key_d = 1;
 	if (keycode == XK_Left)
-		game->key_left = 1;
+		game->input.key_left = 1;
 	if (keycode == XK_Right)
-		game->key_right = 1;
+		game->input.key_right = 1;
 }
 
 static void	ft_clear_move_key(int keycode, t_game *game)
 {
 	if (keycode == XK_w || keycode == XK_W)
-		game->key_w = 0;
+		game->input.key_w = 0;
 	if (keycode == XK_s || keycode == XK_S)
-		game->key_s = 0;
+		game->input.key_s = 0;
 	if (keycode == XK_a || keycode == XK_A)
-		game->key_a = 0;
+		game->input.key_a = 0;
 	if (keycode == XK_d || keycode == XK_D)
-		game->key_d = 0;
+		game->input.key_d = 0;
 	if (keycode == XK_Left)
-		game->key_left = 0;
+		game->input.key_left = 0;
 	if (keycode == XK_Right)
-		game->key_right = 0;
+		game->input.key_right = 0;
 }
 
 int	ft_key_press(int keycode, t_game *game)

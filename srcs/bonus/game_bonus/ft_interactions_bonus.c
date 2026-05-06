@@ -37,7 +37,7 @@ static int	ft_toggle_near_door(t_game *game)
 		{
 			game->doors[i].is_open = !game->doors[i].is_open;
 			if (game->doors[i].is_open)
-				game->doors[i].opened_at_frame = game->frame_count;
+				game->doors[i].opened_at_frame = game->cron.frame_count;
 			ft_print_door_state(game->doors[i].is_open);
 			return (1);
 		}

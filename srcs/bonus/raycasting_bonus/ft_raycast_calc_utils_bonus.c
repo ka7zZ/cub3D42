@@ -46,7 +46,7 @@ void	ft_init_ray(t_ray *ray, t_game *game, int x)
 	double	inv_dir_y;
 
 	// PHASE 4: Strength reduction - pre-compute 2 / win_width instead of repeated division
-	ray->camera_x = x * (2.0 / game->win_width) - 1;
+	ray->camera_x = x * (2.0 / game->graph.win_width) - 1;
 	ray->dir_x = game->kid.dir_x + game->kid.pln_x * ray->camera_x;
 	ray->dir_y = game->kid.dir_y + game->kid.pln_y * ray->camera_x;
 	ray->map_x = (int)game->kid.pos_x;
@@ -75,7 +75,7 @@ void	ft_calculate_wall_height(t_ray *ray, t_game *game)
 	int	half_height;
 
 	// PHASE 4: Strength reduction - pre-compute win_height / 2 instead of repeated division
-	half_height = game->win_height / 2;
+	half_height = game->graph.win_height / 2;
 	if (ray->side == 0)
 		ray->perp_wall_dist = (ray->map_x - game->kid.pos_x
 				+ (1 - ray->step_x) / 2) / ray->dir_x;
@@ -84,15 +84,15 @@ void	ft_calculate_wall_height(t_ray *ray, t_game *game)
 				+ (1 - ray->step_y) / 2) / ray->dir_y;
 	if (ray->perp_wall_dist < 0.01)
 		ray->perp_wall_dist = 0.01;
-	ray->line_height = (int)(game->win_height / ray->perp_wall_dist);
+	ray->line_height = (int)(game->graph.win_height / ray->perp_wall_dist);
 	ray->draw_start = -ray->line_height / 2 + half_height;
 	ray->draw_start += game->kid.pitch;
 	if (ray->draw_start < 0)
 		ray->draw_start = 0;
 	ray->draw_end = ray->line_height / 2 + half_height;
 	ray->draw_end += game->kid.pitch;
-	if (ray->draw_end >= game->win_height)
-		ray->draw_end = game->win_height - 1;
+	if (ray->draw_end >= game->graph.win_height)
+		ray->draw_end = game->graph.win_height - 1;
 	if (ray->side == 0)
 		ray->wall_x = game->kid.pos_y + ray->perp_wall_dist * ray->dir_y;
 	else

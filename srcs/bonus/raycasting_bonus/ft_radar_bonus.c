@@ -24,8 +24,8 @@ static int	ft_radar_size(t_game *game, int padding)
 	int	max_size;
 	int	radar_size;
 
-	max_size = ft_min_int(game->win_width - 2 * padding,
-			game->win_height - 2 * padding);
+	max_size = ft_min_int(game->graph.win_width - 2 * padding,
+			game->graph.win_height - 2 * padding);
 	radar_size = (max_size * 30) / 100;
 	if (radar_size < 150)
 		radar_size = 150;
@@ -43,7 +43,7 @@ void	ft_draw_radar(t_game *game)
 
 	padding = 20;
 	radar_size = ft_radar_size(game, padding);
-	radar_x = game->win_width - radar_size - padding;
+	radar_x = game->graph.win_width - radar_size - padding;
 	radar_y = padding;
 	ft_draw_radar_map(game, radar_x, radar_y, radar_size);
 	ft_draw_player_on_radar(game, radar_x, radar_y, radar_size);

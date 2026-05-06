@@ -45,7 +45,7 @@ static int	ft_store_map_line(t_game *game, char *line, int state[2])
 	if (state[1])
 		return (0);
 	state[0] = 1;
-	return (ft_mapitem_add(&game->map, line));
+	return (ft_mapitem_add(&game->map.map, line));
 }
 
 int	ft_read_cub_lines(t_game *game, char *filename)

@@ -33,7 +33,7 @@ static void	ft_init_gun_paths(char **gun_paths)
 
 int	ft_load_texture(t_game *game, t_texture *tex, char *path)
 {
-	tex->img = mlx_xpm_file_to_image(game->mlx, path,
+	tex->img = mlx_xpm_file_to_image(game->graph.mlx, path,
 			&tex->width, &tex->height);
 	if (!tex->img)
 	{
@@ -49,7 +49,7 @@ int	ft_load_texture(t_game *game, t_texture *tex, char *path)
 			&tex->line_len, &tex->endian);
 	if (!tex->addr)
 	{
-		mlx_destroy_image(game->mlx, tex->img);
+		mlx_destroy_image(game->graph.mlx, tex->img);
 		return (0);
 	}
 	return (1);
@@ -72,8 +72,8 @@ int	ft_load_textures(t_game *game)
 void	ft_free_textures(t_game *game)
 {
 	ft_free_dual_wall_textures(game);
-	if (game->tex_floor.img)
-		mlx_destroy_image(game->mlx, game->tex_floor.img);
-	ft_free_array_textures(game, game->tex_shotgun, 15);
-	ft_free_array_textures(game, game->tex_door, 4);
+	if (game->assets.tex_floor.img)
+		mlx_destroy_image(game->graph.mlx, game->assets.tex_floor.img);
+	ft_free_array_textures(game, game->assets.tex_shotgun, 15);
+	ft_free_array_textures(game, game->assets.tex_door, 4);
 }

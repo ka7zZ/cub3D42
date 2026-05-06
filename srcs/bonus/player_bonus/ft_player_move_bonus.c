@@ -18,7 +18,7 @@ void	ft_move_forward(t_game *game)
 	double	new_y;
 	double	step;
 
-	step = MOVE_SPEED * game->delta_time;
+	step = MOVE_SPEED * game->cron.delta_time;
 	new_x = game->kid.pos_x + game->kid.dir_x * step;
 	new_y = game->kid.pos_y + game->kid.dir_y * step;
 	if (!ft_check_wall(game, new_x, game->kid.pos_y))
@@ -39,7 +39,7 @@ void	ft_move_backward(t_game *game)
 	double	new_y;
 	double	step;
 
-	step = MOVE_SPEED * game->delta_time;
+	step = MOVE_SPEED * game->cron.delta_time;
 	new_x = game->kid.pos_x - game->kid.dir_x * step;
 	new_y = game->kid.pos_y - game->kid.dir_y * step;
 	if (!ft_check_wall(game, new_x, game->kid.pos_y))
@@ -60,7 +60,7 @@ void	ft_move_left(t_game *game)
 	double	new_y;
 	double	step;
 
-	step = MOVE_SPEED * game->delta_time;
+	step = MOVE_SPEED * game->cron.delta_time;
 	new_x = game->kid.pos_x - game->kid.pln_x * step;
 	new_y = game->kid.pos_y - game->kid.pln_y * step;
 	if (!ft_check_wall(game, new_x, game->kid.pos_y))
@@ -81,7 +81,7 @@ void	ft_move_right(t_game *game)
 	double	new_y;
 	double	step;
 
-	step = MOVE_SPEED * game->delta_time;
+	step = MOVE_SPEED * game->cron.delta_time;
 	new_x = game->kid.pos_x + game->kid.pln_x * step;
 	new_y = game->kid.pos_y + game->kid.pln_y * step;
 	if (!ft_check_wall(game, new_x, game->kid.pos_y))

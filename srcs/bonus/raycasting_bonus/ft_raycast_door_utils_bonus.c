@@ -14,10 +14,10 @@
 
 int	ft_is_door_cell(t_game *game, t_ray *ray)
 {
-	if (ray->map_x < 0 || ray->map_x >= game->map_width
-		|| ray->map_y < 0 || ray->map_y >= game->map_height)
+	if (ray->map_x < 0 || ray->map_x >= game->map.map_width
+		|| ray->map_y < 0 || ray->map_y >= game->map.map_height)
 		return (0);
-	return (game->map[ray->map_y][ray->map_x] == 'D');
+	return (game->map.map[ray->map_y][ray->map_x] == 'D');
 }
 
 void	ft_continue_dda_after_door(t_ray *ray, t_game *game)
@@ -37,13 +37,13 @@ void	ft_continue_dda_after_door(t_ray *ray, t_game *game)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (ray->map_x < 0 || ray->map_x >= game->map_width
-			|| ray->map_y < 0 || ray->map_y >= game->map_height)
+		if (ray->map_x < 0 || ray->map_x >= game->map.map_width
+			|| ray->map_y < 0 || ray->map_y >= game->map.map_height)
 		{
 			ray->hit = 1;
 			break ;
 		}
-		if (game->map[ray->map_y][ray->map_x] == '1')
+		if (game->map.map[ray->map_y][ray->map_x] == '1')
 			ray->hit = 1;
 	}
 }

@@ -27,16 +27,16 @@ static int	ft_set_map_dimensions(t_game *game)
 	int	y;
 	int	len;
 
-	game->map_height = (int)ft_mapsize(game->map);
-	if (game->map_height <= 0)
+	game->map.map_height = (int)ft_mapsize(game->map.map);
+	if (game->map.map_height <= 0)
 		return (0);
-	game->map_width = 0;
+	game->map.map_width = 0;
 	y = 0;
-	while (y < game->map_height)
+	while (y < game->map.map_height)
 	{
-		len = ft_line_len_no_eol(game->map[y]);
-		if (len > game->map_width)
-			game->map_width = len;
+		len = ft_line_len_no_eol(game->map.map[y]);
+		if (len > game->map.map_width)
+			game->map.map_width = len;
 		y++;
 	}
 	return (1);
@@ -63,17 +63,17 @@ int	ft_finalize_map_shape(t_game *game)
 
 	if (!ft_set_map_dimensions(game))
 		return (0);
-	norm = (char **)ft_calloc(game->map_height + 1, sizeof(char *));
+	norm = (char **)ft_calloc(game->map.map_height + 1, sizeof(char *));
 	if (!norm)
 		return (0);
 	y = 0;
-	while (y < game->map_height)
+	while (y < game->map.map_height)
 	{
-		if (!ft_alloc_norm_row(&norm[y], game->map_width, game->map[y]))
+		if (!ft_alloc_norm_row(&norm[y], game->map.map_width, game->map.map[y]))
 			return (ft_mapfree(&norm), 0);
 		y++;
 	}
-	ft_mapfree(&game->map);
-	game->map = norm;
+	ft_mapfree(&game->map.map);
+	game->map.map = norm;
 	return (1);
 }

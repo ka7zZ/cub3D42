@@ -14,15 +14,15 @@
 
 static int	ft_load_dark_walls(t_game *g)
 {
-	if (!ft_load_texture(g, &g->tex_wall_dark[0], g->tex_no_path))
+	if (!ft_load_texture(g, &g->assets.tex_wall_dark[0], g->assets.tex_no_path))
 		return (0);
-	if (!ft_load_texture(g, &g->tex_wall_dark[1], g->tex_so_path))
+	if (!ft_load_texture(g, &g->assets.tex_wall_dark[1], g->assets.tex_so_path))
 		return (0);
-	if (!ft_load_texture(g, &g->tex_wall_dark[2], g->tex_we_path))
+	if (!ft_load_texture(g, &g->assets.tex_wall_dark[2], g->assets.tex_we_path))
 		return (0);
-	if (!ft_load_texture(g, &g->tex_wall_dark[3], g->tex_ea_path))
+	if (!ft_load_texture(g, &g->assets.tex_wall_dark[3], g->assets.tex_ea_path))
 		return (0);
-	if (!ft_load_texture(g, &g->tex_wall_dark[4], g->tex_no_path))
+	if (!ft_load_texture(g, &g->assets.tex_wall_dark[4], g->assets.tex_no_path))
 		return (0);
 	return (1);
 }
@@ -34,7 +34,7 @@ int	ft_load_wall_textures(t_game *g)
 
 int	ft_load_floor_textures(t_game *g)
 {
-	return (ft_load_texture(g, &g->tex_floor, "assets/ingame/hall/floor.xpm"));
+	return (ft_load_texture(g, &g->assets.tex_floor, "assets/ingame/hall/floor.xpm"));
 }
 
 int	ft_load_gun_textures(t_game *g, char **gun_paths)
@@ -44,7 +44,7 @@ int	ft_load_gun_textures(t_game *g, char **gun_paths)
 	i = 0;
 	while (i < 15)
 	{
-		if (!ft_load_texture(g, &g->tex_shotgun[i], gun_paths[i]))
+		if (!ft_load_texture(g, &g->assets.tex_shotgun[i], gun_paths[i]))
 			return (0);
 		i++;
 	}
@@ -53,12 +53,12 @@ int	ft_load_gun_textures(t_game *g, char **gun_paths)
 
 int	ft_load_door_textures(t_game *g)
 {
-	if (!ft_load_texture(g, &g->tex_door[0], "assets/ingame/door/door1.xpm"))
+	if (!ft_load_texture(g, &g->assets.tex_door[0], "assets/ingame/door/door1.xpm"))
 		return (0);
-	if (!ft_load_texture(g, &g->tex_door[1], "assets/ingame/door/door2.xpm"))
+	if (!ft_load_texture(g, &g->assets.tex_door[1], "assets/ingame/door/door2.xpm"))
 		return (0);
-	if (!ft_load_texture(g, &g->tex_door[2], "assets/ingame/door/door3.xpm"))
+	if (!ft_load_texture(g, &g->assets.tex_door[2], "assets/ingame/door/door3.xpm"))
 		return (0);
-	return (ft_load_texture(g, &g->tex_door[3],
+	return (ft_load_texture(g, &g->assets.tex_door[3],
 			"assets/ingame/door/door4.xpm"));
 }

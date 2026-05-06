@@ -44,7 +44,7 @@ static void	ft_update_single_door(t_game *game, int i)
 	int		frames_open;
 	double	target;
 
-	frames_open = game->frame_count - game->doors[i].opened_at_frame;
+	frames_open = game->cron.frame_count - game->doors[i].opened_at_frame;
 	if (game->doors[i].is_open && frames_open > DOOR_AUTO_CLOSE_FRAMES
 		&& !ft_player_on_door_cell(game, i))
 		game->doors[i].is_open = 0;

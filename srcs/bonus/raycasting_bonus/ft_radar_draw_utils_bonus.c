@@ -17,10 +17,10 @@ static int	ft_cell_size(t_game *game, int radar_size)
 	int	cell_w;
 	int	cell_h;
 
-	if (game->map_width <= 0 || game->map_height <= 0)
+	if (game->map.map_width <= 0 || game->map.map_height <= 0)
 		return (1);
-	cell_w = radar_size / game->map_width;
-	cell_h = radar_size / game->map_height;
+	cell_w = radar_size / game->map.map_width;
+	cell_h = radar_size / game->map.map_height;
 	if (cell_w < cell_h)
 		return (cell_w);
 	return (cell_h);
@@ -30,14 +30,14 @@ static void	ft_player_pixel_pos(t_game *game, int radar[3], int p[2])
 {
 	int	off[2];
 
-	off[0] = (radar[2] - game->map_width * radar[0]) / 2;
-	off[1] = (radar[2] - game->map_height * radar[0]) / 2;
+	off[0] = (radar[2] - game->map.map_width * radar[0]) / 2;
+	off[1] = (radar[2] - game->map.map_height * radar[0]) / 2;
 	if (off[0] < 0)
 		off[0] = 0;
 	if (off[1] < 0)
 		off[1] = 0;
 	p[0] = radar[1] + off[0] + (int)(game->kid.pos_x * radar[0]);
-	p[1] = radar[3] + off[1] + (int)((game->map_height - game->kid.pos_y) * radar[0]);
+	p[1] = radar[3] + off[1] + (int)((game->map.map_height - game->kid.pos_y) * radar[0]);
 }
 
 void	ft_draw_player_on_radar(t_game *game, int radar_x, int radar_y,

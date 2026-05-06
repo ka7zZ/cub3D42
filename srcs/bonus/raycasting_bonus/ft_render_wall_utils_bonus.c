@@ -23,18 +23,18 @@ static void	ft_draw_wall_pixels_normal(t_game *g, t_ray *r, t_texture *tex, int 
 	int		frame_line_len;
 	int		x_offset;
 
-	frame_addr = g->frame.addr;
-	frame_line_len = g->frame.line_len;
-	x_offset = x * (g->frame.bpp / 8);
+	frame_addr = g->graph.frame.addr;
+	frame_line_len = g->graph.frame.line_len;
+	x_offset = x * (g->graph.frame.bpp / 8);
 	step = 1.0 * tex->height / r->line_height;
-	pos = (r->draw_start - g->win_height / 2 - g->kid.pitch
+	pos = (r->draw_start - g->graph.win_height / 2 - g->kid.pitch
 			+ r->line_height / 2) * step;
 	y = r->draw_start;
 	while (y < r->draw_end)
 	{
 		tex_y = ((int)pos) & (tex->height - 1);
 		color = ft_get_texture_color(tex, r->tex_x, tex_y);
-		if (g->map[r->map_y][r->map_x] == 'D'
+		if (g->map.map[r->map_y][r->map_x] == 'D'
 			&& (color & 0xFF000000) == 0xFF000000)
 			color = -1;
 		if (color != -1)
@@ -55,18 +55,18 @@ static void	ft_draw_wall_pixels_dark(t_game *g, t_ray *r, t_texture *tex, int x)
 	int		frame_line_len;
 	int		x_offset;
 
-	frame_addr = g->frame.addr;
-	frame_line_len = g->frame.line_len;
-	x_offset = x * (g->frame.bpp / 8);
+	frame_addr = g->graph.frame.addr;
+	frame_line_len = g->graph.frame.line_len;
+	x_offset = x * (g->graph.frame.bpp / 8);
 	step = 1.0 * tex->height / r->line_height;
-	pos = (r->draw_start - g->win_height / 2 - g->kid.pitch
+	pos = (r->draw_start - g->graph.win_height / 2 - g->kid.pitch
 			+ r->line_height / 2) * step;
 	y = r->draw_start;
 	while (y < r->draw_end)
 	{
 		tex_y = ((int)pos) & (tex->height - 1);
 		color = ft_get_texture_color(tex, r->tex_x, tex_y);
-		if (g->map[r->map_y][r->map_x] == 'D'
+		if (g->map.map[r->map_y][r->map_x] == 'D'
 			&& (color & 0xFF000000) == 0xFF000000)
 			color = -1;
 		if (color != -1)

@@ -43,12 +43,12 @@ void	ft_perform_dda(t_ray *ray, t_game *game)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (ray->map_x < 0 || ray->map_x >= game->map_width
-			|| ray->map_y < 0 || ray->map_y >= game->map_height)
+		if (ray->map_x < 0 || ray->map_x >= game->map.map_width
+			|| ray->map_y < 0 || ray->map_y >= game->map.map_height)
 			ray->hit = 1;
-		else if (game->map[ray->map_y][ray->map_x] == '1')
+		else if (game->map.map[ray->map_y][ray->map_x] == '1')
 			ray->hit = 1;
-		else if (game->map[ray->map_y][ray->map_x] == 'D')
+		else if (game->map.map[ray->map_y][ray->map_x] == 'D')
 			ray->hit = ft_door_blocks_ray(game, ray);
 	}
 }
@@ -61,8 +61,8 @@ static void	ft_draw_column(t_game *game, t_ray *ray, int x)
 	{
 		behind_ray = *ray;
 		ft_continue_dda_after_door(&behind_ray, game);
-		if (behind_ray.map_x >= 0 && behind_ray.map_x < game->map_width
-			&& behind_ray.map_y >= 0 && behind_ray.map_y < game->map_height)
+		if (behind_ray.map_x >= 0 && behind_ray.map_x < game->map.map_width
+			&& behind_ray.map_y >= 0 && behind_ray.map_y < game->map.map_height)
 		{
 			ft_calculate_wall_height(&behind_ray, game);
 			ft_draw_wall_column(game, &behind_ray, x);
@@ -80,7 +80,7 @@ static void	ft_draw_columns(t_game *game)
 	int		x;
 	int		win_width;
 
-	win_width = game->win_width;
+	win_width = game->graph.win_width;
 	x = 0;
 	while (x < win_width - 2)
 	{
@@ -128,5 +128,5 @@ void	ft_raycast_frame(t_game *game)
 	ft_draw_shotgun_hud(game);
 	ft_draw_crosshair(game);
 	ft_draw_radar(game);
-	mlx_put_image_to_window(game->mlx, game->win, game->frame.img, 0, 0);
+	mlx_put_image_to_window(game->graph.mlx, game->graph.win, game->graph.frame.img, 0, 0);
 }

@@ -44,33 +44,33 @@ static int	ft_parse_rgb(char *s, int *color)
 static int	ft_parse_texture_id(t_game *game, char *trim)
 {
 	if (!ft_strncmp(trim, "NO", 2)
-		&& ft_is_space(trim[2]) && !game->tex_no_path)
-		return (game->tex_no_path = ft_strtrim(trim + 2, " \t"), 1);
+		&& ft_is_space(trim[2]) && !game->assets.tex_no_path)
+		return (game->assets.tex_no_path = ft_strtrim(trim + 2, " \t"), 1);
 	if (!ft_strncmp(trim, "SO", 2)
-		&& ft_is_space(trim[2]) && !game->tex_so_path)
-		return (game->tex_so_path = ft_strtrim(trim + 2, " \t"), 1);
+		&& ft_is_space(trim[2]) && !game->assets.tex_so_path)
+		return (game->assets.tex_so_path = ft_strtrim(trim + 2, " \t"), 1);
 	if (!ft_strncmp(trim, "WE", 2)
-		&& ft_is_space(trim[2]) && !game->tex_we_path)
-		return (game->tex_we_path = ft_strtrim(trim + 2, " \t"), 1);
+		&& ft_is_space(trim[2]) && !game->assets.tex_we_path)
+		return (game->assets.tex_we_path = ft_strtrim(trim + 2, " \t"), 1);
 	if (!ft_strncmp(trim, "EA", 2)
-		&& ft_is_space(trim[2]) && !game->tex_ea_path)
-		return (game->tex_ea_path = ft_strtrim(trim + 2, " \t"), 1);
+		&& ft_is_space(trim[2]) && !game->assets.tex_ea_path)
+		return (game->assets.tex_ea_path = ft_strtrim(trim + 2, " \t"), 1);
 	return (0);
 }
 
 static int	ft_parse_color_id(t_game *game, char *trim)
 {
-	if (trim[0] == 'F' && ft_is_space(trim[1]) && !game->has_floor_color)
+	if (trim[0] == 'F' && ft_is_space(trim[1]) && !game->render.has_floor_color)
 	{
-		if (!ft_parse_rgb(trim + 2, &game->floor_color))
+		if (!ft_parse_rgb(trim + 2, &game->render.floor_color))
 			return (0);
-		return (game->has_floor_color = 1, 1);
+		return (game->render.has_floor_color = 1, 1);
 	}
-	if (trim[0] == 'C' && ft_is_space(trim[1]) && !game->has_ceiling_color)
+	if (trim[0] == 'C' && ft_is_space(trim[1]) && !game->render.has_ceiling_color)
 	{
-		if (!ft_parse_rgb(trim + 2, &game->ceiling_color))
+		if (!ft_parse_rgb(trim + 2, &game->render.ceiling_color))
 			return (0);
-		return (game->has_ceiling_color = 1, 1);
+		return (game->render.has_ceiling_color = 1, 1);
 	}
 	return (0);
 }

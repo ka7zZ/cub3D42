@@ -37,10 +37,10 @@ static void	ft_apply_mouse_pitch(t_game *game, int delta_y)
 {
 	if (delta_y)
 		game->kid.pitch -= delta_y * MOUSE_PITCH_SENS;
-	if (game->kid.pitch > game->win_height / 2)
-		game->kid.pitch = game->win_height / 2;
-	if (game->kid.pitch < -game->win_height / 2)
-		game->kid.pitch = -game->win_height / 2;
+	if (game->kid.pitch > game->graph.win_height / 2)
+		game->kid.pitch = game->graph.win_height / 2;
+	if (game->kid.pitch < -game->graph.win_height / 2)
+		game->kid.pitch = -game->graph.win_height / 2;
 }
 
 static int	ft_clamp_delta(int value)
@@ -57,25 +57,25 @@ int	ft_mouse_motion(int x, int y, t_game *game)
 	int	delta_x;
 	int	delta_y;
 
-	if (!game->mouse_init)
+	if (!game->input.mouse_init)
 	{
-		game->mouse_x = x;
-		game->mouse_y = y;
-		game->mouse_init = 1;
+		game->input.mouse_x = x;
+		game->input.mouse_y = y;
+		game->input.mouse_init = 1;
 		return (0);
 	}
-	delta_x = ft_clamp_delta(x - game->mouse_x);
-	delta_y = ft_clamp_delta(y - game->mouse_y);
-	game->mouse_x = x;
-	game->mouse_y = y;
+	delta_x = ft_clamp_delta(x - game->input.mouse_x);
+	delta_y = ft_clamp_delta(y - game->input.mouse_y);
+	game->input.mouse_x = x;
+	game->input.mouse_y = y;
 	ft_apply_mouse_yaw(game, delta_x);
 	ft_apply_mouse_pitch(game, delta_y);
 	if (delta_x || delta_y)
 	{
-		mlx_mouse_move(game->mlx, game->win, game->win_width / 2,
-			game->win_height / 2);
-		game->mouse_x = game->win_width / 2;
-		game->mouse_y = game->win_height / 2;
+		mlx_mouse_move(game->graph.mlx, game->graph.win, game->graph.win_width / 2,
+			game->graph.win_height / 2);
+		game->input.mouse_x = game->graph.win_width / 2;
+		game->input.mouse_y = game->graph.win_height / 2;
 	}
 	return (0);
 }

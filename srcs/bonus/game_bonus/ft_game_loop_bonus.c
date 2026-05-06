@@ -6,7 +6,7 @@
 /*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 20:34:45 by vruiz-ru          #+#    #+#             */
-/*   Updated: 2026/05/06 17:49:11 by vruiz-ru         ###   ########.fr       */
+/*   Updated: 2026/05/06 19:00:01 by vruiz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,28 @@ static void	ft_update_delta_time(t_game *game)
 	long long	now;
 
 	now = ft_now_us();
-	if (game->last_frame_us == 0)
-		game->delta_time = 0.016;
+	if (game->cron.last_frame_us == 0)
+		game->cron.delta_time = 0.016;
 	else
-		game->delta_time = (double)(now - game->last_frame_us) / 1000000.0;
-	if (game->delta_time < MIN_DELTA_TIME)
-		game->delta_time = MIN_DELTA_TIME;
-	if (game->delta_time > MAX_DELTA_TIME)
-		game->delta_time = MAX_DELTA_TIME;
-	game->last_frame_us = now;
+		game->cron.delta_time = (double)(now - game->cron.last_frame_us)
+			/ 1000000.0;
+	if (game->cron.delta_time < MIN_DELTA_TIME)
+		game->cron.delta_time = MIN_DELTA_TIME;
+	if (game->cron.delta_time > MAX_DELTA_TIME)
+		game->cron.delta_time = MAX_DELTA_TIME;
+	game->cron.last_frame_us = now;
 }
 
 static int	ft_cell_blocks_player(t_game *game, int map_x, int map_y)
 {
 	int	i;
 
-	if (map_x < 0 || map_x >= game->map_width || map_y < 0
-		|| map_y >= game->map_height)
+	if (map_x < 0 || map_x >= game->map.map_width || map_y < 0
+		|| map_y >= game->map.map_height)
 		return (1);
-	if (game->map[map_y][map_x] == '1')
+	if (game->map.map[map_y][map_x] == '1')
 		return (1);
-	if (game->map[map_y][map_x] != 'D')
+	if (game->map.map[map_y][map_x] != 'D')
 		return (0);
 	i = 0;
 	while (i < game->door_count)
@@ -87,7 +88,7 @@ int	ft_game_loop(t_game *game)
 
 	frame_start = ft_now_us();
 	ft_update_delta_time(game);
-	game->frame_count++;
+	game->cron.frame_count++;
 	ft_update_doors(game);
 	ft_update_player(game);
 	ft_update_shotgun(game);

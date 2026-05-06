@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   structs_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 14:18:20 by aghergut          #+#    #+#             */
-/*   Updated: 2026/05/06 16:39:04 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/06 18:48:01 by vruiz-ru         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_BONUS_H
 # define STRUCTS_BONUS_H
 
+# include <stdbool.h>
 # include "macros_bonus.h"
 
 typedef struct s_mapxy
@@ -125,46 +126,83 @@ typedef struct s_image
 	int		endian;
 }	t_image;
 
-typedef struct s_game
+// Graphics/Window System
+typedef struct s_mlx_context
 {
-	void		*mlx;
-	void		*win;
-	int			win_width;
-	int			win_height;
-	t_image		frame;
-	t_player	player;
+	void	*mlx;
+	void	*win;
+	int		win_width;
+	int		win_height;
+	t_image	frame;
+}	t_mlx_context;
+
+// World Geometry
+typedef struct s_map_data
+{
+	char	**original_map;
+	char	**map;
+	int		map_width;
+	int		map_height;
+}	t_map_data;
+
+// Texture Assets
+typedef struct s_assets
+{
 	t_texture	tex_wall_dark[5];
 	t_texture	tex_floor;
 	t_texture	tex_shotgun[15];
 	t_texture	tex_door[4];
-	t_shotgun	shotgun;
-	t_door		doors[MAX_DOORS];
-	int			door_count;
-	char		**original_map;
-	char		**map;
-	int			map_width;
-	int			map_height;
-	double		*z_buffer;
-	int			frame_count;
-	int			key_w;
-	int			key_s;
-	int			key_a;
-	int			key_d;
-	int			key_left;
-	int			key_right;
-	int			mouse_x;
-	int			mouse_y;
-	int			mouse_init;
-	double		delta_time;
-	long long	last_frame_us;
-	int			floor_color;
-	int			ceiling_color;
-	int			has_floor_color;
-	int			has_ceiling_color;
 	char		*tex_no_path;
 	char		*tex_so_path;
 	char		*tex_we_path;
 	char		*tex_ea_path;
+}	t_assets;
+
+// Input Management
+typedef struct s_input
+{
+	int	key_w;
+	int	key_s;
+	int	key_a;
+	int	key_d;
+	int	key_left;
+	int	key_right;
+	int	mouse_x;
+	int	mouse_y;
+	int	mouse_init;
+}	t_input;
+
+// Frame Timing
+typedef struct s_timing
+{
+	double		delta_time;
+	long long	last_frame_us;
+	int			frame_count;
+}	t_timing;
+
+// Rendering Configuration
+typedef struct s_render_config
+{
+	int	floor_color;
+	int	ceiling_color;
+	int	has_floor_color;
+	int	has_ceiling_color;
+}	t_render_config;
+
+typedef struct s_game
+{
+	t_mlx_context	graph;
+	t_map_data		map;
+	t_assets		assets;
+	t_player		kid;
+	t_input			input;
+	t_timing		cron;
+	t_render_config	render;
+	t_shotgun		shotgun;
+	t_door			doors[MAX_DOORS];
+	int				door_count;
+	double			*z_buffer;
+	bool			is_pressed;
 }	t_game;
 
 #endif

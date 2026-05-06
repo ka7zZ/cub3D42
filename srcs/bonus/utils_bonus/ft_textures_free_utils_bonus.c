@@ -19,8 +19,8 @@ void	ft_free_dual_wall_textures(t_game *g)
 	i = 0;
 	while (i < 5)
 	{
-		if (g->tex_wall_dark[i].img)
-			mlx_destroy_image(g->mlx, g->tex_wall_dark[i].img);
+		if (g->assets.tex_wall_dark[i].img)
+			mlx_destroy_image(g->graph.mlx, g->assets.tex_wall_dark[i].img);
 		i++;
 	}
 }
@@ -33,7 +33,7 @@ void	ft_free_array_textures(t_game *g, t_texture *arr, int n)
 	while (i < n)
 	{
 		if (arr[i].img)
-			mlx_destroy_image(g->mlx, arr[i].img);
+			mlx_destroy_image(g->graph.mlx, arr[i].img);
 		i++;
 	}
 }
