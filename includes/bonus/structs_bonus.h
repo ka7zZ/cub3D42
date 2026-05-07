@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 14:18:20 by aghergut          #+#    #+#             */
-/*   Updated: 2026/05/06 18:48:01 by vruiz-ru         ###   ########.fr       */
+/*   Updated: 2026/05/07 13:37:23 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

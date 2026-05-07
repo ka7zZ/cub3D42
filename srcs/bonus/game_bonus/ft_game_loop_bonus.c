@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_game_loop_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 20:34:45 by vruiz-ru          #+#    #+#             */
-/*   Updated: 2026/05/06 19:00:01 by vruiz-ru         ###   ########.fr       */
+/*   Updated: 2026/05/07 13:37:23 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
