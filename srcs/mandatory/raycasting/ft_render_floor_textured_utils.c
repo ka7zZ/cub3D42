@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 18:16:16 by vruiz-ru          #+#    #+#             */
-/*   Updated: 2026/05/06 18:10:22 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/07 12:11:24 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,8 @@ static void	ft_fill_line(t_image *img, int y, int w, int color)
 
 static void	ft_fill_color(t_game *game, int *y, int plane, int color)
 {
-	t_image	*img;
 	int		win_width;
 
-	img = &game->graph.frame;
 	win_width = game->graph.win_width;
 	while (*y < plane - 3)
 	{
@@ -63,10 +61,8 @@ void	ft_draw_floor_ceiling_textured(t_game *game)
 {
 	int		horizon;
 	int		y;
-	int		win_width;
 	int		win_height;
 
-	win_width = game->graph.win_width;
 	win_height = game->graph.win_height;
 	horizon = win_height / 2;
 	if (horizon < 0)

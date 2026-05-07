@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_game_loop.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 17:28:35 by vruiz-ru          #+#    #+#             */
-/*   Updated: 2026/05/06 19:41:43 by vruiz-ru         ###   ########.fr       */
+/*   Updated: 2026/05/07 12:05:14 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,24 +69,11 @@ int	ft_check_wall(t_game *game, double x, double y)
 
 int	ft_game_loop(t_game *game)
 {
-	long long	frame_start;
-	long long	delta_calc_time;
-	long long	player_update_time;
-	long long	raycast_time;
-	long long	total_time;
-
-	if (game->is_pressed == false)
-	{
-		frame_start = ft_now_us();
-		ft_update_delta_time(game);
-		delta_calc_time = ft_now_us() - frame_start;
-		game->cron.frame_count++;
-		ft_update_player(game);
-		player_update_time = ft_now_us() - frame_start - delta_calc_time;
-		ft_raycast_frame(game);
-		raycast_time = ft_now_us() - frame_start - delta_calc_time
-			- player_update_time;
-		total_time = ft_now_us() - frame_start;
-	}
+	if (game->is_pressed == true)
+		return (0);	
+	ft_update_delta_time(game);
+	game->cron.frame_count++;
+	ft_update_player(game);
+	ft_raycast_frame(game);
 	return (0);
 }

@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aghergut <aghergut@student.42madrid.org    +#+  +:+       +#+        */
+/*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 12:05:02 by aghergut          #+#    #+#             */
-/*   Updated: 2025/12/10 18:12:36 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/07 12:39:51 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+void	get_next_line_flush(int fd)
+{
+	char	*line;
+
+	line = get_next_line(fd);
+	while (line)
+	{
+		free(line);
+		line = get_next_line(fd);		
+	}
+}
 
 static int	ft_append_nodes(t_list **lst, int fd, int *reading)
 {

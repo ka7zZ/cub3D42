@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parse_map_read.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 16:45:40 by vruiz-ru          #+#    #+#             */
-/*   Updated: 2026/05/05 16:45:42 by vruiz-ru         ###   ########.fr       */
+/*   Updated: 2026/05/07 12:44:04 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	ft_read_cub_lines(t_game *game, char *filename)
 	while (line)
 	{
 		if (!ft_store_map_line(game, line, state))
-			return (free(line), close(fd), 0);
+			return (get_next_line_flush(fd), free(line), close(fd), 0);
 		free(line);
 		line = get_next_line(fd);
 	}

@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 16:48:19 by vruiz-ru          #+#    #+#             */
-/*   Updated: 2026/05/06 15:01:54 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/07 12:05:18 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ static int	ft_parse_rgb(char *s, int *color)
 	int		rgb[3];
 	int		i;
 
+	if (ft_ocurr(s, ',') != 2)
+		return (0);
 	parts = ft_split(s, ',');
 	if (!parts)
 		return (0);

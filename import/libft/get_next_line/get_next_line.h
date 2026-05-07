@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 12:05:38 by aghergut          #+#    #+#             */
-/*   Updated: 2024/12/21 18:07:17 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/07 12:42:33 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@
 # include "../puts/puts.h"
 
 char	*get_next_line(int fd);
+void	get_next_line_flush(int fd);
 
 #endif
