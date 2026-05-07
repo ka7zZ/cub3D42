@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 12:05:02 by aghergut          #+#    #+#             */
-/*   Updated: 2026/05/07 12:39:51 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/07 19:55:13 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	get_next_line_flush(int fd)
 	while (line)
 	{
 		free(line);
-		line = get_next_line(fd);		
+		line = get_next_line(fd);
 	}
 }
 

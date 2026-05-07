@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 14:21:10 by aghergut          #+#    #+#             */
-/*   Updated: 2026/05/07 13:37:23 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/07 19:37:31 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,4 @@ int	main(int argc, char **argv)
 	ft_set_hooks(&game);
 	mlx_loop(game.graph.mlx);
 	return (0);
-
+}

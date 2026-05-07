@@ -3,8 +3,8 @@ SO ./assets/ingame/room/wall5lightsoff.xpm
 WE      ./assets/ingame/room/wall5lightsoff.xpm
 EA ./assets/ingame/room/wall5lightsoff.xpm
 
-F 175,205,225
-C 175,205,235
+F 175,205,225,
+C 175,205,235,
 
 1111111111111111111111111111
 1000001000000000100000000001

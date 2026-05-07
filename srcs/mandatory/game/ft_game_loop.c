@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 17:28:35 by vruiz-ru          #+#    #+#             */
-/*   Updated: 2026/05/07 13:37:23 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/07 19:51:46 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	ft_check_wall(t_game *game, double x, double y)
 int	ft_game_loop(t_game *game)
 {
 	if (game->is_pressed == true)
-		return (0);	
+		return (0);
 	ft_update_delta_time(game);
 	game->cron.frame_count++;
 	ft_update_player(game);

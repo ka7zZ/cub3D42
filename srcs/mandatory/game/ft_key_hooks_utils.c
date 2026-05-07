@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_key_hooks_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vruiz-ru <vruiz-ru@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/06 14:15:47 by aghergut          #+#    #+#             */
-/*   Updated: 2026/05/06 16:53:18 by vruiz-ru         ###   ########.fr       */
+/*   Updated: 2026/05/07 19:44:08 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

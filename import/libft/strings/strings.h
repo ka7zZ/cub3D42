@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 16:59:34 by aghergut          #+#    #+#             */
-/*   Updated: 2026/05/07 11:55:22 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/07 19:52:25 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	*ft_calloc(size_t n, size_t size);
 // finding char
 char	*ft_strchr(const char *str, int ch);
 char	*ft_strrchr(const char *str, int ch);
-int     ft_ocurr(char *str, char ch);
+int		ft_ocurr(char *str, char ch);
 // finding sequence
 char	*ft_strnstr(const char *haystack, const char *needle, size_t n);
 // comparing

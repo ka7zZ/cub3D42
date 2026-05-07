@@ -6,7 +6,7 @@
 /*   By: aghergut <aghergut@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/05 16:45:40 by vruiz-ru          #+#    #+#             */
-/*   Updated: 2026/05/07 12:44:04 by aghergut         ###   ########.fr       */
+/*   Updated: 2026/05/07 19:36:46 by aghergut         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,6 @@ static int	ft_store_map_line(t_game *game, char *line, int state[2])
 		return (1);
 	if (!state[0] && ft_parse_config_line(game, line))
 		return (1);
-	if (state[0] && ft_is_blank_line(line))
-		return (state[1] = 1, 1);
-	if (state[1])
-		return (0);
 	state[0] = 1;
 	return (ft_mapitem_add(&game->map.map, line));
 }

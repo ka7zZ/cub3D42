@@ -4,8 +4,9 @@ EA ./assets/ingame/room/wall4light.xpm
 NO ./assets/ingame/room/wall1light.xpm
  
 F 100,100,100
-C 140,255,220
+C 140,255,220,
 
+1
 
 1111111111  1
 1000000001 101
